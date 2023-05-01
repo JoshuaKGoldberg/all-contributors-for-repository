@@ -33,10 +33,41 @@ npm i all-contributors-for-repository
 ```
 
 ```ts
-import { greet } from "all-contributors-for-repository";
+import { createAllContributorsForRepository } from "all-contributors-for-repository";
 
-greet("Hello, world!");
+const contributors = await createAllContributorsForRepository();
+/*
+{
+  john_reilly: [ 'bug', 'code' ],
+  joshuakgoldberg: [ 'maintenance', 'tool' ],
+}
+*/
 ```
+
+> **Warning**
+> This tool only sees contributions that can be detected from GitHub's API.
+> Don't forget to manually add in other forms of contributions!
+
+The types of contributions detected are:
+
+- 🐛 `bug`: anybody who filed an issue labeled as accepting PRs and a bug _(see options)_
+- 💻 `computer`: all PR authors and co-authors
+- 📖 `doc`: authors of merged PRs that address issues labeled as accepting PRs and docs _(see options)_
+- 🚧 `maintenance`: adding labels to issues and PRs, and merging PRs
+- 👀 `review`: submitting a review for a PR
+- 🔧 `tool`: authors of merged PRs that address issues labeled as accepting PRs and tooling _(see options)_
+
+> 💡 Given that list of contributors, you might want to run `all-contributors add` on each contributor & contribution type.
+>
+> ```ts
+> import { $ } from "execa";
+>
+> for (const [contributor, contributions] of Object.entries(contributors)) {
+> 	for (const contribution of contributions) {
+> 		await $`npx all-contributors add ${contributor} ${contribution}`;
+> 	}
+> }
+> ```
 
 ## Development
 
@@ -52,7 +83,7 @@ Thanks! 💖
 <table>
   <tbody>
     <tr>
-      <td align="center" valign="top" width="14.28%"><a href="http://www.joshuakgoldberg.com"><img src="https://avatars.githubusercontent.com/u/3335181?v=4?s=100" width="100px;" alt="Josh Goldberg"/><br /><sub><b>Josh Goldberg</b></sub></a><br /><a href="#tool-JoshuaKGoldberg" title="Tools">🔧</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="http://www.joshuakgoldberg.com"><img src="https://avatars.githubusercontent.com/u/3335181?v=4?s=100" width="100px;" alt="Josh Goldberg"/><br /><sub><b>Josh Goldberg</b></sub></a><br /><a href="#tool-JoshuaKGoldberg" title="Tools">🔧</a> <a href="https://github.com/JoshuaKGoldberg/all-contributors-for-repository/issues?q=author%3AJoshuaKGoldberg" title="Bug reports">🐛</a> <a href="https://github.com/JoshuaKGoldberg/all-contributors-for-repository/commits?author=JoshuaKGoldberg" title="Code">💻</a> <a href="#maintenance-JoshuaKGoldberg" title="Maintenance">🚧</a> <a href="https://github.com/JoshuaKGoldberg/all-contributors-for-repository/pulls?q=is%3Apr+reviewed-by%3AJoshuaKGoldberg" title="Reviewed Pull Requests">👀</a> <a href="https://github.com/JoshuaKGoldberg/all-contributors-for-repository/commits?author=JoshuaKGoldberg" title="Documentation">📖</a></td>
     </tr>
   </tbody>
 </table>

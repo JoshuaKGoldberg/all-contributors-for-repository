@@ -33,6 +33,9 @@
 	"lint-staged": {
 		"*": "prettier --ignore-unknown --write"
 	},
+	"dependencies": {
+		"octokit": "^2.0.14"
+	},
 	"devDependencies": {
 		"@types/eslint": "^8.21.1",
 		"@typescript-eslint/eslint-plugin": "^5.48.2",

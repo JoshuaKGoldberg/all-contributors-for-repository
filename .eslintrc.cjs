@@ -50,6 +50,13 @@ module.exports = {
 			extends: ["plugin:jsonc/recommended-with-json"],
 		},
 		{
+			files: ["**/*.md/*.ts"],
+			rules: {
+				// These rules don't make sense in .md codeblocks
+				"@typescript-eslint/no-unused-vars": "off",
+			},
+		},
+		{
 			files: "**/*.test.ts",
 			rules: {
 				// These on-by-default rules aren't useful in test files.

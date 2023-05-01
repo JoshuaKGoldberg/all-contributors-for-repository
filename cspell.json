@@ -10,18 +10,20 @@
 		"script/*.json"
 	],
 	"words": [
+		"allcontributors",
 		"Codecov",
 		"codespace",
 		"commitlint",
 		"contributorsrc",
 		"conventionalcommits",
+		"execa",
 		"infile",
+		"joshuakgoldberg",
 		"knip",
 		"lcov",
+		"outro",
 		"packagejson",
 		"quickstart",
-		"wontfix",
-		"outro",
-		"execa"
+		"wontfix"
 	]
 }
