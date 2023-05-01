@@ -27,7 +27,7 @@ export async function paginate<T>(
 ) {
 	const items: T[] = [];
 
-	for (let i = 0; i < 10; i += 1) {
+	for (let i = 0; i < 5; i += 1) {
 		const response = await request({ page: i, per_page: perPage, ...defaults });
 
 		items.push(...response);

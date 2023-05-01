@@ -48,7 +48,7 @@ const contributors = await createAllContributorsForRepository({
 ```
 
 > **Warning**
-> This tool only sees contributions that can be detected from the last 1,000 events in GitHub's API.
+> This tool only sees contributions that can be detected from the last 500 events in GitHub's API.
 > Don't forget to manually add in other forms of contributions!
 
 The types of contributions detected are:

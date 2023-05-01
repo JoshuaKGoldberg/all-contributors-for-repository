@@ -37,7 +37,7 @@ describe("paginate", () => {
 		]);
 	});
 
-	it("stops retrieving after 10 requests", async () => {
+	it("stops retrieving after 5 requests", async () => {
 		const request = ({ page }: RequestOptionsWithPage) =>
 			Promise.resolve(Array(100).fill({ page }));
 
@@ -49,11 +49,6 @@ describe("paginate", () => {
 			...Array(100).fill({ page: 2 }),
 			...Array(100).fill({ page: 3 }),
 			...Array(100).fill({ page: 4 }),
-			...Array(100).fill({ page: 5 }),
-			...Array(100).fill({ page: 6 }),
-			...Array(100).fill({ page: 7 }),
-			...Array(100).fill({ page: 8 }),
-			...Array(100).fill({ page: 9 }),
 		]);
 	});
 });
