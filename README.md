@@ -66,9 +66,7 @@ The types of contributions detected are:
 > import { $ } from "execa";
 >
 > for (const [contributor, contributions] of Object.entries(contributors)) {
-> 	for (const contribution of contributions) {
-> 		await $`npx all-contributors add ${contributor} ${contribution}`;
-> 	}
+> 	await $`npx all-contributors add ${contributor} ${contributions.join(",")}`;
 > }
 > ```
 
