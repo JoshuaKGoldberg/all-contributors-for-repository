@@ -1,26 +1,34 @@
 import { Octokit } from "octokit";
 
-import { AllContributorsForRepositoryOptions } from "../options.js";
-
 const perPage = 100;
 
-export function createOctokit(
-	options: AllContributorsForRepositoryOptions
-): Octokit {
+export interface RequestDefaults {
+	owner: string;
+	repo: string;
+}
+
+export function createOctokit(auth: string | undefined): Octokit {
 	return new (Octokit.defaults({
-		owner: options.owner,
+		headers: {
+			"X-GitHub-Api-Version": "2022-11-28",
+		},
 		per_page: perPage,
-		repo: options.repo,
-	}))({ auth: options.auth });
+	}))({ auth });
+}
+
+export interface RequestOptionsWithPage extends RequestDefaults {
+	page: number;
+	per_page: number;
 }
 
 export async function paginate<T>(
-	request: (page: number, perPage: number) => Promise<T[]>
+	defaults: RequestDefaults,
+	request: (options: RequestOptionsWithPage) => Promise<T[]>
 ) {
 	const items: T[] = [];
 
 	for (let i = 0; ; i += 1) {
-		const response = await request(i, perPage);
+		const response = await request({ page: i, per_page: perPage, ...defaults });
 
 		items.push(...response);
 

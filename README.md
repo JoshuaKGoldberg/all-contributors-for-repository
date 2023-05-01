@@ -35,7 +35,10 @@ npm i all-contributors-for-repository
 ```ts
 import { createAllContributorsForRepository } from "all-contributors-for-repository";
 
-const contributors = await createAllContributorsForRepository();
+const contributors = await createAllContributorsForRepository({
+	owner: "JoshuaKGoldberg",
+	repo: "template-typescript-node-package",
+});
 /*
 {
   john_reilly: [ 'bug', 'code' ],

@@ -1,21 +1,16 @@
 import { Octokit } from "octokit";
 
-import { paginate } from "./api.js";
+import { paginate, RequestDefaults } from "./api.js";
 
 export async function collectAcceptedIssues(
+	defaults: RequestDefaults,
 	octokit: Octokit,
 	labelAcceptingPrs: string
 ) {
-	const issues = await paginate(async (page, perPage) => {
+	const issues = await paginate(defaults, async (options) => {
 		const response = await octokit.request("GET /repos/{owner}/{repo}/issues", {
-			headers: {
-				"X-GitHub-Api-Version": "2022-11-28",
-			},
+			...options,
 			labels: labelAcceptingPrs,
-			owner: "JoshuaKGoldberg",
-			page,
-			per_page: perPage,
-			repo: "template-typescript-node-package",
 			state: "all",
 		});
 		return response.data;

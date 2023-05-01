@@ -7,14 +7,15 @@ import { collectIssueEvents } from "./collectIssueEvents.js";
 import { collectMergedPulls } from "./collectMergedPulls.js";
 
 export async function collect(options: AllContributorsForRepositoryOptions) {
-	const octokit = createOctokit(options);
 	const contributors = new ContributorsCollection(options.ignoredLogins);
+	const defaults = { owner: options.owner, repo: options.repo };
+	const octokit = createOctokit(options.auth);
 
 	const [acceptedIssues, events, issueEvents, mergedPulls] = await Promise.all([
-		collectAcceptedIssues(octokit, options.labelAcceptingPrs),
-		collectEvents(octokit),
-		collectIssueEvents(octokit),
-		collectMergedPulls(octokit),
+		collectAcceptedIssues(defaults, octokit, options.labelAcceptingPrs),
+		collectEvents(defaults, octokit),
+		collectIssueEvents(defaults, octokit),
+		collectMergedPulls(defaults, octokit),
 	]);
 
 	for (const acceptedIssue of Object.values(acceptedIssues)) {

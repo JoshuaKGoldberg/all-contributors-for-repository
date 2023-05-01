@@ -1,6 +1,6 @@
 import { Octokit } from "octokit";
 
-import { paginate } from "./api.js";
+import { paginate, RequestDefaults } from "./api.js";
 
 const relevantIssueEvents = new Set([
 	"assigned",
@@ -10,18 +10,15 @@ const relevantIssueEvents = new Set([
 	"unlocked",
 ]);
 
-export async function collectIssueEvents(octokit: Octokit) {
-	const issueEvents = await paginate(async (page, perPage) => {
+export async function collectIssueEvents(
+	defaults: RequestDefaults,
+	octokit: Octokit
+) {
+	const issueEvents = await paginate(defaults, async (options) => {
 		const response = await octokit.request(
 			"GET /repos/{owner}/{repo}/issues/events",
 			{
-				headers: {
-					"X-GitHub-Api-Version": "2022-11-28",
-				},
-				owner: "JoshuaKGoldberg",
-				page,
-				per_page: perPage,
-				repo: "template-typescript-node-package",
+				...options,
 				state: "all",
 			}
 		);
