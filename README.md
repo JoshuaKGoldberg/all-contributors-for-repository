@@ -60,13 +60,12 @@ const contributors = await createAllContributorsForRepository({
 The types of contributions detected from the GitHub API are:
 
 - 🐛 `bug`: anybody who filed an issue labeled as accepting PRs and a bug _(see options)_
-- 💻 `code`: all PR authors and co-authors
 - 📖 `doc`: authors of merged PRs that address issues labeled as accepting PRs and docs _(see options)_
 - 🚧 `maintenance`: adding labels to issues and PRs, and merging PRs
 - 👀 `review`: submitting a review for a PR
 - 🔧 `tool`: authors of merged PRs that address issues labeled as accepting PRs and tooling _(see options)_
 
-Additionally, based on PR [conventional commit titles](https://www.conventionalcommits.org/en/v1.0.0/#summary) in the [Angular convention](https://github.com/angular/angular/blob/22b96b9/CONTRIBUTING.md#type):
+Additionally, based on PR [conventional commit titles](https://www.conventionalcommits.org/en/v1.0.0/#summary) in the [Angular convention](https://github.com/angular/angular/blob/22b96b9/CONTRIBUTING.md#type), for all PR authors and co-authors:
 
 - `build` and `ci`: will be treated as an `:infra:` contribution
 - `docs`: will be treated as an `:doc:` contribution

@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
-import { parseMergedPullType } from "./parseMergedPullType";
+
+import { parseMergedPullType } from "./parseMergedPullType.js";
 
 describe("parseMergedPullType", () => {
 	it.each([

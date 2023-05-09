@@ -1,9 +1,10 @@
 import { describe, expect, it } from "vitest";
-import { parseMergedPullAuthors } from "./parseMergedPullAuthors";
+
+import { parseMergedPullAuthors } from "./parseMergedPullAuthors.js";
 
 describe("parseMergedPullAuthors", () => {
 	it.each([
-		[{ body: undefined, user: "null" }, []],
+		[{ body: undefined, user: null }, []],
 		[{ body: undefined, user: { login: "abc123" } }, ["abc123"]],
 		[{ body: "feat: something", user: { login: "abc123" } }, ["abc123"]],
 		[

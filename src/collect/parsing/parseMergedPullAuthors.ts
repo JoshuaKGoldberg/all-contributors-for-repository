@@ -1,4 +1,4 @@
-export interface MergedPullForAuthors {
+interface MergedPullForAuthors {
 	body?: string;
 	user?: { login?: string } | null;
 }
