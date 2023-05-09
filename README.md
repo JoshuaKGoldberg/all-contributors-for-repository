@@ -26,6 +26,12 @@
     <img alt="TypeScript: Strict" src="https://img.shields.io/badge/typescript-strict-21bb42.svg" />
 </p>
 
+<p align="center">
+	<em>
+		✨ See this tool in action with <a href="https://github.com/JoshuaKGoldberg/all-contributors-auto-action">all-contributors-auto-action</a>! ✨
+	</em>
+</p>
+
 ## Usage
 
 ```shell
