@@ -26,6 +26,12 @@
     <img alt="TypeScript: Strict" src="https://img.shields.io/badge/typescript-strict-21bb42.svg" />
 </p>
 
+<p align="center">
+	<em>
+		✨ See this tool in action with <a href="https://github.com/JoshuaKGoldberg/all-contributors-auto-action">all-contributors-auto-action</a>! ✨
+	</em>
+</p>
+
 ## Usage
 
 ```shell
@@ -51,14 +57,21 @@ const contributors = await createAllContributorsForRepository({
 > This tool only sees contributions that can be detected from the last 500 events in GitHub's API.
 > Don't forget to manually add in other forms of contributions!
 
-The types of contributions detected are:
+The types of contributions detected from the GitHub API are:
 
 - 🐛 `bug`: anybody who filed an issue labeled as accepting PRs and a bug _(see options)_
-- 💻 `computer`: all PR authors and co-authors
+- 💻 `code`: all PR authors and co-authors
 - 📖 `doc`: authors of merged PRs that address issues labeled as accepting PRs and docs _(see options)_
 - 🚧 `maintenance`: adding labels to issues and PRs, and merging PRs
 - 👀 `review`: submitting a review for a PR
 - 🔧 `tool`: authors of merged PRs that address issues labeled as accepting PRs and tooling _(see options)_
+
+Additionally, based on PR [conventional commit titles](https://www.conventionalcommits.org/en/v1.0.0/#summary) in the [Angular convention](https://github.com/angular/angular/blob/22b96b9/CONTRIBUTING.md#type):
+
+- `build` and `ci`: will be treated as an `:infra:` contribution
+- `docs`: will be treated as an `:doc:` contribution
+- `test`: will be treated as an `:test:` contribution
+- All other PRs -including those without a conventional title- will be treated as `:code:` contributions
 
 > 💡 Given that list of contributors, you might want to run `all-contributors add` on each contributor & contribution type.
 >

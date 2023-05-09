@@ -15,3 +15,5 @@ export async function collectMergedPulls(
 		return response.data.items;
 	});
 }
+
+export type MergedPull = Awaited<ReturnType<typeof collectMergedPulls>>[number];
