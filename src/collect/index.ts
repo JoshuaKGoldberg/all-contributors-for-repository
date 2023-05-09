@@ -5,6 +5,8 @@ import { collectAcceptedIssues } from "./collectAcceptedIssues.js";
 import { collectEvents } from "./collectEvents.js";
 import { collectIssueEvents } from "./collectIssueEvents.js";
 import { collectMergedPulls } from "./collectMergedPulls.js";
+import { parseMergedPullAuthors } from "./parsing/parseMergedPullAuthors.js";
+import { parseMergedPullType } from "./parsing/parseMergedPullType.js";
 
 export async function collect(options: AllContributorsForRepositoryOptions) {
 	const contributors = new ContributorsCollection(options.ignoredLogins);
@@ -39,12 +41,11 @@ export async function collect(options: AllContributorsForRepositoryOptions) {
 
 	// 💻 `code`: all PR authors and co-authors
 	for (const mergedPull of mergedPulls) {
-		contributors.add(mergedPull.user?.login, "code");
+		const authors = parseMergedPullAuthors(mergedPull);
+		const type = parseMergedPullType(mergedPull.title);
 
-		for (const coAuthor of mergedPull.body
-			?.match(/co-authored-by:.+/gi)
-			?.map((text) => text.match(/@(\S+)/)) ?? []) {
-			contributors.add(coAuthor?.[1], "code");
+		for (const author of authors) {
+			contributors.add(author, type);
 		}
 	}
 
