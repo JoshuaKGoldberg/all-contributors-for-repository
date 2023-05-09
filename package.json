@@ -34,9 +34,11 @@
 		"*": "prettier --ignore-unknown --write"
 	},
 	"dependencies": {
+		"conventional-commits-parser": "^3.2.4",
 		"octokit": "^2.0.14"
 	},
 	"devDependencies": {
+		"@types/conventional-commits-parser": "^3.0.3",
 		"@types/eslint": "^8.21.1",
 		"@typescript-eslint/eslint-plugin": "^5.48.2",
 		"@typescript-eslint/parser": "^5.48.2",
