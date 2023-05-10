@@ -6,9 +6,9 @@ describe("eventIsPullRequestReviewEvent", () => {
 	it.each([
 		[{ type: "other" }, false],
 		[{ issue: {}, type: "other" }, false],
-		[{ issue: { id: 1 }, type: "other" }, false],
+		[{ issue: { number: 1 }, type: "other" }, false],
 		[{ type: "PullRequestReviewEvent" }, false],
-		[{ issue: { id: 1 }, type: "PullRequestReviewEvent" }, true],
+		[{ issue: { number: 1 }, type: "PullRequestReviewEvent" }, true],
 	])("when given %j, returns %s", (event, expected) => {
 		const actual = eventIsPullRequestReviewEvent(event);
 

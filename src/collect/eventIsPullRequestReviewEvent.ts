@@ -2,7 +2,7 @@ import { RepoEvent } from "./collectEvents.js";
 
 type PullRequestReviewEvent = RepoEvent & {
 	issue: {
-		id: number;
+		number: number;
 	};
 };
 
@@ -11,6 +11,6 @@ export function eventIsPullRequestReviewEvent(
 ): event is PullRequestReviewEvent {
 	return (
 		event.type === "PullRequestReviewEvent" &&
-		!!(event as Partial<PullRequestReviewEvent>).issue?.id
+		!!(event as Partial<PullRequestReviewEvent>).issue?.number
 	);
 }

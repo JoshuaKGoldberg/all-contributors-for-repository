@@ -1,7 +1,7 @@
 export class Contributor {
-	readonly contributions: Record<string, number[]> = {};
+	readonly contributions: Record<string, Set<number>> = {};
 
-	add(id: number, type: string) {
-		(this.contributions[type] ??= []).push(id);
+	add(number: number, type: string) {
+		(this.contributions[type] ??= new Set()).add(number);
 	}
 }

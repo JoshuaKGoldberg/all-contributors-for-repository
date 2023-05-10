@@ -8,7 +8,7 @@ describe("Contributor", () => {
 
 		contributor.add(1, "code");
 
-		expect(contributor.contributions).toEqual({ code: [1] });
+		expect(contributor.contributions).toEqual({ code: new Set([1]) });
 	});
 
 	it("adds a new entry under an existing type when that type already exists", () => {
@@ -17,7 +17,7 @@ describe("Contributor", () => {
 		contributor.add(1, "code");
 		contributor.add(2, "code");
 
-		expect(contributor.contributions).toEqual({ code: [1, 2] });
+		expect(contributor.contributions).toEqual({ code: new Set([1, 2]) });
 	});
 
 	it("adds a new entry under a second type when that type does not already exist", () => {
@@ -26,6 +26,9 @@ describe("Contributor", () => {
 		contributor.add(1, "code");
 		contributor.add(2, "design");
 
-		expect(contributor.contributions).toEqual({ code: [1], design: [2] });
+		expect(contributor.contributions).toEqual({
+			code: new Set([1]),
+			design: new Set([2]),
+		});
 	});
 });

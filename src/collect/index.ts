@@ -42,7 +42,7 @@ export async function collect(
 			if (labels.some((label) => label === labelType)) {
 				contributors.add(
 					acceptedIssue.user?.login,
-					acceptedIssue.id,
+					acceptedIssue.number,
 					contribution
 				);
 			}
@@ -55,7 +55,7 @@ export async function collect(
 		const type = parseMergedPullType(mergedPull.title);
 
 		for (const author of authors) {
-			contributors.add(author, mergedPull.id, type);
+			contributors.add(author, mergedPull.number, type);
 		}
 	}
 
@@ -64,7 +64,7 @@ export async function collect(
 
 	for (const event of issueEvents) {
 		if (event.actor && event.issue) {
-			contributors.add(event.actor.login, event.issue.id, "maintenance");
+			contributors.add(event.actor.login, event.issue.number, "maintenance");
 			maintainers.add(event.actor.login);
 		}
 	}
@@ -76,7 +76,7 @@ export async function collect(
 			eventIsPullRequestReviewEvent(event) &&
 			maintainers.has(event.actor.login)
 		) {
-			contributors.add(event.actor.login, event.issue.id, "review");
+			contributors.add(event.actor.login, event.issue.number, "review");
 		}
 	}
 

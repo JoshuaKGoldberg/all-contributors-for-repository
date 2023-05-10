@@ -21,10 +21,10 @@ export class ContributorsCollection {
 		this.#ignoredLogins = ignoredLogins;
 	}
 
-	add(login: string | undefined, id: number, type: string) {
+	add(login: string | undefined, number: number, type: string) {
 		if (login && !this.#ignoredLogins.has(login)) {
 			(this.#contributors[login.toLowerCase()] ??= new Contributor()).add(
-				id,
+				number,
 				type
 			);
 		}
@@ -34,7 +34,18 @@ export class ContributorsCollection {
 		return Object.fromEntries(
 			Object.entries(this.#contributors)
 				.map(
-					([login, contributor]) => [login, contributor.contributions] as const
+					([login, contributor]) =>
+						[
+							login,
+							Object.fromEntries(
+								Object.entries(contributor.contributions).map(
+									([type, numbers]) => [
+										type,
+										Array.from(numbers).sort((a, b) => a - b),
+									]
+								)
+							),
+						] as const
 				)
 				.sort(([a], [b]) => a.localeCompare(b))
 		);
