@@ -14,40 +14,40 @@ describe("ContributorsCollection", () => {
 	it("adds a login when it is not ignored", () => {
 		const contributors = new ContributorsCollection(new Set());
 
-		contributors.add("abc", "bug");
+		contributors.add("abc", 0, "bug");
 
 		const actual = contributors.collect();
 
-		expect(actual).toEqual({ abc: ["bug"] });
+		expect(actual).toEqual({ abc: { bug: [0] } });
 	});
 
 	it("adds sorted contributions for logins when they are added in non-alphabetical order ", () => {
 		const contributors = new ContributorsCollection(new Set());
 
-		contributors.add("def", "tool");
-		contributors.add("abc", "tool");
-		contributors.add("abc", "bug");
-		contributors.add("abc", "code");
-		contributors.add("def", "code");
+		contributors.add("def", 1, "tool");
+		contributors.add("abc", 2, "tool");
+		contributors.add("abc", 3, "bug");
+		contributors.add("abc", 4, "code");
+		contributors.add("def", 5, "code");
 
 		const actual = contributors.collect();
 
 		expect(actual).toEqual({
-			abc: ["bug", "code", "tool"],
-			def: ["code", "tool"],
+			abc: { bug: [3], code: [4], tool: [2] },
+			def: { code: [5], tool: [1] },
 		});
 	});
 
 	it("does not add a login contribution when it is ignored ", () => {
 		const contributors = new ContributorsCollection(new Set(["ignored"]));
 
-		contributors.add("abc", "bug");
-		contributors.add("ignored", "code");
+		contributors.add("abc", 1, "bug");
+		contributors.add("ignored", 2, "code");
 
 		const actual = contributors.collect();
 
 		expect(actual).toEqual({
-			abc: ["bug"],
+			abc: { bug: [1] },
 		});
 	});
 });
