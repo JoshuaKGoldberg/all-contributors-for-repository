@@ -1,6 +1,6 @@
 {
 	"name": "all-contributors-for-repository",
-	"version": "0.0.7",
+	"version": "0.0.8",
 	"description": "Generates an allcontributors list for an existing repository.",
 	"repository": {
 		"type": "git",
