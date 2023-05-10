@@ -78,7 +78,8 @@ Additionally, based on PR [conventional commit titles](https://www.conventionalc
 > import { $ } from "execa";
 >
 > for (const [contributor, contributions] of Object.entries(contributors)) {
-> 	await $`npx all-contributors add ${contributor} ${contributions.join(",")}`;
+> 	const contributionTypes = Object.keys(contributions).join(",");
+> 	await $`npx all-contributors add ${contributor} ${contributionTypes}`;
 > }
 > ```
 

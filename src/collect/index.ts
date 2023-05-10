@@ -1,14 +1,20 @@
-import { ContributorsCollection } from "../ContributorsCollection.js";
+import {
+	ContributorsCollection,
+	ContributorsContributions,
+} from "../ContributorsCollection.js";
 import { AllContributorsForRepositoryOptions } from "../options.js";
 import { createOctokit } from "./api.js";
 import { collectAcceptedIssues } from "./collectAcceptedIssues.js";
 import { collectEvents } from "./collectEvents.js";
 import { collectIssueEvents } from "./collectIssueEvents.js";
 import { collectMergedPulls } from "./collectMergedPulls.js";
+import { eventIsPullRequestReviewEvent } from "./eventIsPullRequestReviewEvent.js";
 import { parseMergedPullAuthors } from "./parsing/parseMergedPullAuthors.js";
 import { parseMergedPullType } from "./parsing/parseMergedPullType.js";
 
-export async function collect(options: AllContributorsForRepositoryOptions) {
+export async function collect(
+	options: AllContributorsForRepositoryOptions
+): Promise<ContributorsContributions> {
 	const contributors = new ContributorsCollection(options.ignoredLogins);
 	const defaults = { owner: options.owner, repo: options.repo };
 	const octokit = createOctokit(options.auth);
@@ -34,18 +40,22 @@ export async function collect(options: AllContributorsForRepositoryOptions) {
 			[options.labelTypeTool, "tool"],
 		]) {
 			if (labels.some((label) => label === labelType)) {
-				contributors.add(acceptedIssue.user?.login, contribution);
+				contributors.add(
+					acceptedIssue.user?.login,
+					acceptedIssue.id,
+					contribution
+				);
 			}
 		}
 	}
 
-	// 💻 `code`: all PR authors and co-authors
+	// 💻 `code` & others: all PR authors and co-authors
 	for (const mergedPull of mergedPulls) {
 		const authors = parseMergedPullAuthors(mergedPull);
 		const type = parseMergedPullType(mergedPull.title);
 
 		for (const author of authors) {
-			contributors.add(author, type);
+			contributors.add(author, mergedPull.id, type);
 		}
 	}
 
@@ -53,8 +63,8 @@ export async function collect(options: AllContributorsForRepositoryOptions) {
 	const maintainers = new Set<string>();
 
 	for (const event of issueEvents) {
-		if (event.actor) {
-			contributors.add(event.actor.login, "maintenance");
+		if (event.actor && event.issue) {
+			contributors.add(event.actor.login, event.issue.id, "maintenance");
 			maintainers.add(event.actor.login);
 		}
 	}
@@ -63,10 +73,10 @@ export async function collect(options: AllContributorsForRepositoryOptions) {
 	// (restricted just to users marked as maintainers)
 	for (const event of events) {
 		if (
-			event.type === "PullRequestReviewEvent" &&
+			eventIsPullRequestReviewEvent(event) &&
 			maintainers.has(event.actor.login)
 		) {
-			contributors.add(event.actor.login, "review");
+			contributors.add(event.actor.login, event.issue.id, "review");
 		}
 	}
 
