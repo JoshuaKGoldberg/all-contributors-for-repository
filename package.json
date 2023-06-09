@@ -34,7 +34,7 @@
 		"*": "prettier --ignore-unknown --write"
 	},
 	"dependencies": {
-		"conventional-commits-parser": "^3.2.4",
+		"conventional-commits-parser": "^4.0.0",
 		"octokit": "^2.0.14"
 	},
 	"devDependencies": {
