@@ -9,7 +9,7 @@ export async function collectMergedPulls(
 	return await paginate(defaults, async (options) => {
 		const response = await octokit.request("GET /search/issues", {
 			...options,
-			q: "repo:JoshuaKGoldberg/template-typescript-node-package+is:pr+is:merged",
+			q: `repo:${defaults.owner}/${defaults.repo}+is:pr+is:merged`,
 		});
 
 		return response.data.items;
