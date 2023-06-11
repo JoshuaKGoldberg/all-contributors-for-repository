@@ -39,9 +39,9 @@ npm i all-contributors-for-repository
 ```
 
 ```ts
-import { createAllContributorsForRepository } from "all-contributors-for-repository";
+import { getAllContributorsForRepository } from "all-contributors-for-repository";
 
-const contributors = await createAllContributorsForRepository({
+const contributors = await getAllContributorsForRepository({
 	owner: "JoshuaKGoldberg",
 	repo: "template-typescript-node-package",
 });
@@ -85,7 +85,7 @@ Additionally, based on PR [conventional commit titles](https://www.conventionalc
 
 ### Options
 
-The exported `createAllContributorsForRepository` function takes in an object with two required properties:
+The exported `getAllContributorsForRepository` function takes in an object with two required properties:
 
 - `owner` _(`string`)_: The owner of the repository to query, such as `"JoshuaKGoldberg"`.
 - `repository` _(`string`)_: The name of the repository to query, such as `"all-contributors-for-repository"`.
@@ -101,9 +101,9 @@ It additionally allows for the following optional options.
 - `labelTypeTool` _(`string`)_: Label to indicate an issue is for tooling.
 
 ```js
-import { createAllContributorsForRepository } from "all-contributors-for-repository";
+import { getAllContributorsForRepository } from "all-contributors-for-repository";
 
-createAllContributorsForRepository({
+getAllContributorsForRepository({
 	auth: "abc123",
 	ignoredLogins: ["MyBotLikeUser"],
 	labelAcceptingPrs: "help wanted",
