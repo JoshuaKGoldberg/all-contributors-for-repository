@@ -14,13 +14,44 @@ const defaultOptions = {
 };
 
 export interface RawAllContributorsForRepositoryOptions {
+	/**
+	 * GitHub auth token to query the API with, if necessary for private repositories and/or to avoid rate limiting.
+	 */
 	auth?: string;
+
+	/**
+	 * Usernames to ignore commits from, such as bot and bot-like users.
+	 */
 	ignoredLogins?: string[];
+
+	/**
+	 * Label to indicate an issue is accepting pull requests.
+	 */
 	labelAcceptingPrs?: string;
+
+	/**
+	 * Label to indicate an issue is for a bug.
+	 */
 	labelTypeBug?: string;
+
+	/**
+	 * Label to indicate an issue is for documentation.
+	 */
 	labelTypeDocs?: string;
+
+	/**
+	 * Label to indicate an issue is for tooling.
+	 */
 	labelTypeTool?: string;
+
+	/**
+	 * The owner of the repository to query, such as `"JoshuaKGoldberg"`.
+	 */
 	owner: string;
+
+	/**
+	 *  The name of the repository to query, such as `"all-contributors-for-repository"`.
+	 */
 	repo: string;
 }
 
