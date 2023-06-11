@@ -4,7 +4,7 @@ import {
 	RawAllContributorsForRepositoryOptions,
 } from "./options.js";
 
-export async function createAllContributorsForRepository(
+export async function getAllContributorsForRepository(
 	rawOptions: RawAllContributorsForRepositoryOptions
 ) {
 	const options = fillInOptions(rawOptions);
