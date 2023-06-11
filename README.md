@@ -59,11 +59,11 @@ const contributors = await createAllContributorsForRepository({
 
 The types of contributions detected from the GitHub API are:
 
-- 🐛 `bug`: anybody who filed an issue labeled as accepting PRs and a bug _(see options)_
-- 📖 `doc`: authors of merged PRs that address issues labeled as accepting PRs and docs _(see options)_
+- 🐛 `bug`: anybody who filed an issue labeled as accepting PRs and a bug _(see [Options](#options))_
+- 📖 `doc`: authors of merged PRs that address issues labeled as accepting PRs and docs _(see [Options](#options))_
 - 🚧 `maintenance`: adding labels to issues and PRs, and merging PRs
 - 👀 `review`: submitting a review for a PR
-- 🔧 `tool`: authors of merged PRs that address issues labeled as accepting PRs and tooling _(see options)_
+- 🔧 `tool`: authors of merged PRs that address issues labeled as accepting PRs and tooling _(see [Options](#options))_
 
 Additionally, based on PR [conventional commit titles](https://www.conventionalcommits.org/en/v1.0.0/#summary) in the [Angular convention](https://github.com/angular/angular/blob/22b96b9/CONTRIBUTING.md#type), for all PR authors and co-authors:
 
@@ -82,6 +82,36 @@ Additionally, based on PR [conventional commit titles](https://www.conventionalc
 > 	await $`npx all-contributors add ${contributor} ${contributionTypes}`;
 > }
 > ```
+
+### Options
+
+The exported `createAllContributorsForRepository` function takes in an object with two required properties:
+
+- `owner` _(`string`)_: The owner of the repository to query, such as `"JoshuaKGoldberg"`.
+- `repository` _(`string`)_: The name of the repository to query, such as `"all-contributors-for-repository"`.
+
+It additionally allows for the following optional options.
+
+- `auth` _(`string`)_: GitHub auth token to query the API with, if necessary for private repositories and/or to avoid rate limiting.
+- `ignoredLogins` _(`string[]`)_: Usernames to ignore commits from, such as bot and bot-like users.
+  - Default: `"allcontributors"`, `"allcontributors[bot]"`, `"dependabot"`, `"dependabot[bot]"`, `"renovate"`, `"renovate[bot]"`
+- `labelAcceptingPrs` _(`string`)_: Label to indicate an issue is accepting pull requests.
+- `labelTypeBug` _(`string`)_: Label to indicate an issue is for a bug.
+- `labelTypeDocs` _(`string`)_: Label to indicate an issue is for documentation.
+- `labelTypeTool` _(`string`)_: Label to indicate an issue is for tooling.
+
+```js
+import { createAllContributorsForRepository } from "all-contributors-for-repository";
+
+createAllContributorsForRepository({
+	auth: "abc123",
+	ignoredLogins: ["MyBotLikeUser"],
+	labelAcceptingPrs: "help wanted",
+	labelTypeBug: "bug",
+	labelTypeDocs: "docs",
+	labelTypeTool: "tool",
+});
+```
 
 ## Development
 
