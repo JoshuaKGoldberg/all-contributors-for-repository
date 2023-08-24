@@ -1,3 +1,4 @@
+import { CachingMap } from "../CachingMap.js";
 import {
 	ContributorsCollection,
 	ContributorsContributions,
@@ -9,6 +10,7 @@ import { collectEvents } from "./collectEvents.js";
 import { collectIssueEvents } from "./collectIssueEvents.js";
 import { collectMergedPulls } from "./collectMergedPulls.js";
 import { eventIsPullRequestReviewEvent } from "./eventIsPullRequestReviewEvent.js";
+import { collectUserByEmail } from "./parsing/collectUserByEmail.js";
 import { parseMergedPullAuthors } from "./parsing/parseMergedPullAuthors.js";
 import { parseMergedPullType } from "./parsing/parseMergedPullType.js";
 
@@ -50,8 +52,14 @@ export async function collect(
 	}
 
 	// 💻 `code` & others: all PR authors and co-authors
+	const authorsByEmailCache = new CachingMap(
+		async (email: string) => await collectUserByEmail(email, octokit)
+	);
 	for (const mergedPull of mergedPulls) {
-		const authors = parseMergedPullAuthors(mergedPull);
+		const authors = await parseMergedPullAuthors(
+			mergedPull,
+			authorsByEmailCache
+		);
 		const type = parseMergedPullType(mergedPull.title);
 
 		for (const author of authors) {
