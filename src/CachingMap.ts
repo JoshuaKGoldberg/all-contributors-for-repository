@@ -1,4 +1,4 @@
-export type Getter<Key, Value> = (key: Key) => Value;
+type Getter<Key, Value> = (key: Key) => Value;
 
 export class CachingMap<Key, Value> {
 	#cache = new Map<Key, Value>();

@@ -1,3 +1,4 @@
+import { CachingMap } from "../CachingMap.js";
 import {
 	ContributorsCollection,
 	ContributorsContributions,
@@ -9,7 +10,6 @@ import { collectEvents } from "./collectEvents.js";
 import { collectIssueEvents } from "./collectIssueEvents.js";
 import { collectMergedPulls } from "./collectMergedPulls.js";
 import { eventIsPullRequestReviewEvent } from "./eventIsPullRequestReviewEvent.js";
-import { CachingMap } from "../CachingMap.js";
 import { collectUserByEmail } from "./parsing/collectUserByEmail.js";
 import { parseMergedPullAuthors } from "./parsing/parseMergedPullAuthors.js";
 import { parseMergedPullType } from "./parsing/parseMergedPullType.js";
