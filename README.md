@@ -1,6 +1,6 @@
 <h1 align="center">All Contributors For Repository</h1>
 
-<p align="center">Generates an allcontributors list for an existing repository.</p>
+<p align="center">Generates an allcontributors list for an existing repository. 🤝</p>
 
 <p align="center">
 	<a href="#contributors" target="_blank">
@@ -45,12 +45,14 @@ const contributors = await getAllContributorsForRepository({
 	owner: "JoshuaKGoldberg",
 	repo: "template-typescript-node-package",
 });
+
 /*
 {
   john_reilly: [ 'bug', 'code' ],
   joshuakgoldberg: [ 'maintenance', 'tool' ],
 }
 */
+console.log(contributors);
 ```
 
 > **Warning**
@@ -138,6 +140,4 @@ Thanks! 💖
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 <!-- spellchecker: enable -->
 
-<!-- You can remove this notice if you don't want it 🙂 no worries! -->
-
-> 💙 This package is based on [@JoshuaKGoldberg](https://github.com/JoshuaKGoldberg)'s [template-typescript-node-package](https://github.com/JoshuaKGoldberg/template-typescript-node-package).
+> 💙 This package is based on [@JoshuaKGoldberg](https://github.com/JoshuaKGoldberg)'s [create-typescript-app](https://github.com/JoshuaKGoldberg/create-typescript-app).

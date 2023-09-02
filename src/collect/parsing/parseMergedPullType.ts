@@ -10,5 +10,5 @@ const allContributorsTypes = new Map([
 export function parseMergedPullType(title: string) {
 	const { type } = conventionalCommitsParser.sync(title);
 
-	return (type && allContributorsTypes.get(type)) || "code";
+	return (type && allContributorsTypes.get(type)) ?? "code";
 }

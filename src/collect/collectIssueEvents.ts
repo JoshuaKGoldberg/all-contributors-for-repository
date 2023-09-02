@@ -1,6 +1,6 @@
 import { Octokit } from "octokit";
 
-import { paginate, RequestDefaults } from "./api.js";
+import { RequestDefaults, paginate } from "./api.js";
 
 const relevantIssueEvents = new Set([
 	"assigned",
@@ -12,7 +12,7 @@ const relevantIssueEvents = new Set([
 
 export async function collectIssueEvents(
 	defaults: RequestDefaults,
-	octokit: Octokit
+	octokit: Octokit,
 ) {
 	const issueEvents = await paginate(defaults, async (options) => {
 		const response = await octokit.request(
@@ -20,12 +20,12 @@ export async function collectIssueEvents(
 			{
 				...options,
 				state: "all",
-			}
+			},
 		);
 		return response.data;
 	});
 
 	return issueEvents.filter((issueEvent) =>
-		relevantIssueEvents.has(issueEvent.event)
+		relevantIssueEvents.has(issueEvent.event),
 	);
 }

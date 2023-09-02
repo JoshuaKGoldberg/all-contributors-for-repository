@@ -1,10 +1,10 @@
 import { Octokit } from "octokit";
 
-import { paginate, RequestDefaults } from "./api.js";
+import { RequestDefaults, paginate } from "./api.js";
 
 export async function collectMergedPulls(
 	defaults: RequestDefaults,
-	octokit: Octokit
+	octokit: Octokit,
 ) {
 	return await paginate(defaults, async (options) => {
 		const response = await octokit.request("GET /search/issues", {

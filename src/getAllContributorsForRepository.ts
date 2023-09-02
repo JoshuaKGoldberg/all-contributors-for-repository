@@ -1,11 +1,11 @@
 import { collect } from "./collect/index.js";
 import {
-	fillInOptions,
 	RawAllContributorsForRepositoryOptions,
+	fillInOptions,
 } from "./options.js";
 
 export async function getAllContributorsForRepository(
-	rawOptions: RawAllContributorsForRepositoryOptions
+	rawOptions: RawAllContributorsForRepositoryOptions,
 ) {
 	const options = fillInOptions(rawOptions);
 

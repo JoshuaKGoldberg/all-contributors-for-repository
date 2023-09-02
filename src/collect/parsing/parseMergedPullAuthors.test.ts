@@ -46,7 +46,7 @@ describe("parseMergedPullAuthors", () => {
 	])("given %j, returns %j", async (mergedPull, expected) => {
 		const result = await parseMergedPullAuthors(
 			mergedPull,
-			new CachingMap((key: string) => Promise.resolve(key.split("@")[0]))
+			new CachingMap((key: string) => Promise.resolve(key.split("@")[0])),
 		);
 
 		expect(result).toEqual(expected);

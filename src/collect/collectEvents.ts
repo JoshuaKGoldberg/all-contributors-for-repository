@@ -1,12 +1,12 @@
 import { Octokit } from "octokit";
 
-import { paginate, RequestDefaults } from "./api.js";
+import { RequestDefaults, paginate } from "./api.js";
 
 export type RepoEvent = Awaited<ReturnType<typeof collectEvents>>[number];
 
 export async function collectEvents(
 	defaults: RequestDefaults,
-	octokit: Octokit
+	octokit: Octokit,
 ) {
 	const events = await paginate(defaults, async (options) => {
 		const eventsResponse = await octokit.request(
@@ -14,7 +14,7 @@ export async function collectEvents(
 			{
 				...options,
 				state: "all",
-			}
+			},
 		);
 
 		return eventsResponse.data;
