@@ -1,5 +1,5 @@
 export {
-	ContributorContributions,
-	ContributorsContributions,
+	type ContributorContributions,
+	type ContributorsContributions,
 } from "./ContributorsCollection.js";
 export { getAllContributorsForRepository } from "./getAllContributorsForRepository.js";
