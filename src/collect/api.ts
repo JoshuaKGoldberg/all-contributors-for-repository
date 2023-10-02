@@ -23,7 +23,7 @@ export interface RequestOptionsWithPage extends RequestDefaults {
 
 export async function paginate<T>(
 	defaults: RequestDefaults,
-	request: (options: RequestOptionsWithPage) => Promise<T[]>
+	request: (options: RequestOptionsWithPage) => Promise<T[]>,
 ) {
 	const items: T[] = [];
 

@@ -7,7 +7,7 @@ type PullRequestReviewEvent = RepoEvent & {
 };
 
 export function eventIsPullRequestReviewEvent(
-	event: Pick<RepoEvent, "type">
+	event: Pick<RepoEvent, "type">,
 ): event is PullRequestReviewEvent {
 	return (
 		event.type === "PullRequestReviewEvent" &&

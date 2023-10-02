@@ -7,7 +7,7 @@ interface MergedPullForAuthors {
 
 export async function parseMergedPullAuthors(
 	mergedPull: MergedPullForAuthors,
-	authorsCache: CachingMap<string, Promise<string | undefined>>
+	authorsCache: CachingMap<string, Promise<string | undefined>>,
 ) {
 	const authors: (string | undefined)[] = [];
 
@@ -31,7 +31,9 @@ export async function parseMergedPullAuthors(
 
 	return Array.from(
 		new Set(
-			authors.filter((author: string | undefined): author is string => !!author)
-		)
+			authors.filter(
+				(author: string | undefined): author is string => !!author,
+			),
+		),
 	);
 }

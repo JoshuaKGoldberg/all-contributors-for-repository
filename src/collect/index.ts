@@ -15,7 +15,7 @@ import { parseMergedPullAuthors } from "./parsing/parseMergedPullAuthors.js";
 import { parseMergedPullType } from "./parsing/parseMergedPullType.js";
 
 export async function collect(
-	options: AllContributorsForRepositoryOptions
+	options: AllContributorsForRepositoryOptions,
 ): Promise<ContributorsContributions> {
 	const contributors = new ContributorsCollection(options.ignoredLogins);
 	const defaults = { owner: options.owner, repo: options.repo };
@@ -30,7 +30,7 @@ export async function collect(
 
 	for (const acceptedIssue of Object.values(acceptedIssues)) {
 		const labels = acceptedIssue.labels.map((label) =>
-			typeof label === "string" ? label : label.name
+			typeof label === "string" ? label : label.name,
 		);
 
 		for (const [labelType, contribution] of [
@@ -45,7 +45,7 @@ export async function collect(
 				contributors.add(
 					acceptedIssue.user?.login,
 					acceptedIssue.number,
-					contribution
+					contribution,
 				);
 			}
 		}
@@ -53,12 +53,12 @@ export async function collect(
 
 	// 💻 `code` & others: all PR authors and co-authors
 	const authorsByEmailCache = new CachingMap(
-		async (email: string) => await collectUserByEmail(email, octokit)
+		async (email: string) => await collectUserByEmail(email, octokit),
 	);
 	for (const mergedPull of mergedPulls) {
 		const authors = await parseMergedPullAuthors(
 			mergedPull,
-			authorsByEmailCache
+			authorsByEmailCache,
 		);
 		const type = parseMergedPullType(mergedPull.title);
 

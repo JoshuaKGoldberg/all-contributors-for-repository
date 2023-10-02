@@ -67,12 +67,12 @@ export interface AllContributorsForRepositoryOptions {
 }
 
 export function fillInOptions(
-	rawOptions: RawAllContributorsForRepositoryOptions
+	rawOptions: RawAllContributorsForRepositoryOptions,
 ): AllContributorsForRepositoryOptions {
 	return {
 		auth: rawOptions.auth,
 		ignoredLogins: new Set(
-			rawOptions.ignoredLogins ?? defaultOptions.ignoredLogins
+			rawOptions.ignoredLogins ?? defaultOptions.ignoredLogins,
 		),
 		labelAcceptingPrs:
 			rawOptions.labelAcceptingPrs ?? defaultOptions.labelAcceptingPrs,
