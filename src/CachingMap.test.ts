@@ -27,13 +27,13 @@ describe("CachingMap", () => {
 		const getter = vi.fn().mockImplementation((key: string) => key);
 		const cachingMap = new CachingMap(getter);
 
-		expect(cachingMap.get("key-first")).toEqual("key-first");
-		expect(cachingMap.get("key-second")).toEqual("key-second");
-		expect(cachingMap.get("key-first")).toEqual("key-first");
-		expect(cachingMap.get("key-second")).toEqual("key-second");
-		expect(cachingMap.get("key-second")).toEqual("key-second");
-		expect(cachingMap.get("key-first")).toEqual("key-first");
-		expect(cachingMap.get("key-first")).toEqual("key-first");
+		expect(cachingMap.get("key-first")).toBe("key-first");
+		expect(cachingMap.get("key-second")).toBe("key-second");
+		expect(cachingMap.get("key-first")).toBe("key-first");
+		expect(cachingMap.get("key-second")).toBe("key-second");
+		expect(cachingMap.get("key-second")).toBe("key-second");
+		expect(cachingMap.get("key-first")).toBe("key-first");
+		expect(cachingMap.get("key-first")).toBe("key-first");
 
 		expect(getter.mock.calls).toEqual([["key-first"], ["key-second"]]);
 	});

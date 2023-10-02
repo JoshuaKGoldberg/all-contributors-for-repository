@@ -21,7 +21,7 @@ describe("ContributorsCollection", () => {
 		expect(actual).toEqual({ abc: { bug: [0] } });
 	});
 
-	it("adds sorted contributions for logins when they are added in non-alphabetical order ", () => {
+	it("adds sorted contributions for logins when they are added in non-alphabetical order", () => {
 		const contributors = new ContributorsCollection(new Set());
 
 		contributors.add("def", 1, "tool");
@@ -38,7 +38,7 @@ describe("ContributorsCollection", () => {
 		});
 	});
 
-	it("does not add a login contribution when it is ignored ", () => {
+	it("does not add a login contribution when it is ignored", () => {
 		const contributors = new ContributorsCollection(new Set(["ignored"]));
 
 		contributors.add("abc", 1, "bug");
