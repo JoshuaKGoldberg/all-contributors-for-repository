@@ -25,9 +25,8 @@ describe("collectIssueEvents", () => {
 	});
 
 	it("returns [] when existing issue data body includes only irrelevant events", async () => {
-		const issue = { event: "unrelated", id: "abc123" };
 		mockRequest.mockResolvedValue({
-			data: [issue],
+			data: [{ event: "unrelated", id: "abc123" }],
 		});
 
 		const actual = await collectIssueEvents(defaults, mockOctokit);
@@ -37,6 +36,7 @@ describe("collectIssueEvents", () => {
 
 	it("includes the event when existing issue data body includes a relevant event", async () => {
 		const issue = { event: "assigned", id: "abc123" };
+
 		mockRequest.mockResolvedValue({
 			data: [issue],
 		});

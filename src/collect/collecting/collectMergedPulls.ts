@@ -1,6 +1,8 @@
 import { Octokit } from "octokit";
 
-import { RequestDefaults, paginate } from "./api.js";
+import { RequestDefaults, paginate } from "../api.js";
+
+export type MergedPull = Awaited<ReturnType<typeof collectMergedPulls>>[number];
 
 export async function collectMergedPulls(
 	defaults: RequestDefaults,

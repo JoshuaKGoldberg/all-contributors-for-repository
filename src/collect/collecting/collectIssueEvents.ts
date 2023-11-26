@@ -1,6 +1,6 @@
 import { Octokit } from "octokit";
 
-import { RequestDefaults, paginate } from "./api.js";
+import { RequestDefaults, paginate } from "../api.js";
 
 const relevantIssueEvents = new Set([
 	"assigned",
@@ -9,6 +9,8 @@ const relevantIssueEvents = new Set([
 	"pinned",
 	"unlocked",
 ]);
+
+export type IssueEvent = Awaited<ReturnType<typeof collectIssueEvents>>[number];
 
 export async function collectIssueEvents(
 	defaults: RequestDefaults,

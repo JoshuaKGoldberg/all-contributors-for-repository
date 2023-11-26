@@ -1,14 +1,14 @@
 import { Octokit } from "octokit";
 
-import { RequestDefaults, paginate } from "./api.js";
+import { RequestDefaults, paginate } from "../api.js";
 
-export type RepoEvent = Awaited<ReturnType<typeof collectEvents>>[number];
+export type RepoEvent = Awaited<ReturnType<typeof collectRepoEvents>>[number];
 
-export async function collectEvents(
+export async function collectRepoEvents(
 	defaults: RequestDefaults,
 	octokit: Octokit,
 ) {
-	const events = await paginate(defaults, async (options) => {
+	return await paginate(defaults, async (options) => {
 		const eventsResponse = await octokit.request(
 			"GET /repos/{owner}/{repo}/events",
 			{
@@ -19,6 +19,4 @@ export async function collectEvents(
 
 		return eventsResponse.data;
 	});
-
-	return events;
 }
