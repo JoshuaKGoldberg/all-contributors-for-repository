@@ -1,92 +1,36 @@
-import { createCachingCoAuthorToUsername } from "co-author-to-username";
-
-import {
-	ContributorsCollection,
-	ContributorsContributions,
-} from "../ContributorsCollection.js";
+import { ContributorsContributions } from "../ContributorsCollection.js";
 import { AllContributorsForRepositoryOptions } from "../options.js";
+import { addAcceptedIssues } from "./adding/addAcceptedIssues.js";
+import { addMergedPulls } from "./adding/addMergedPulls.js";
 import { createOctokit } from "./api.js";
-import { collectAcceptedIssues } from "./collectAcceptedIssues.js";
-import { collectEvents } from "./collectEvents.js";
-import { collectIssueEvents } from "./collectIssueEvents.js";
-import { collectMergedPulls } from "./collectMergedPulls.js";
-import { eventIsPullRequestReviewEvent } from "./eventIsPullRequestReviewEvent.js";
-import { parseMergedPullAuthors } from "./parsing/parseMergedPullAuthors.js";
-import { parseMergedPullType } from "./parsing/parseMergedPullType.js";
+import { collectAcceptedIssues } from "./collecting/collectAcceptedIssues.js";
+import { collectIssueEvents } from "./collecting/collectIssueEvents.js";
+import { collectMergedPulls } from "./collecting/collectMergedPulls.js";
+import { collectRepoEvents } from "./collecting/collectRepoEvents.js";
+import { processContributors } from "./processing/processContributors.js";
 
 export async function collect(
 	options: AllContributorsForRepositoryOptions,
 ): Promise<ContributorsContributions> {
-	const contributors = new ContributorsCollection(options.ignoredLogins);
 	const defaults = { owner: options.owner, repo: options.repo };
 	const octokit = createOctokit(options.auth);
 
-	const [acceptedIssues, events, issueEvents, mergedPulls] = await Promise.all([
-		collectAcceptedIssues(defaults, octokit, options.labelAcceptingPrs),
-		collectEvents(defaults, octokit),
-		collectIssueEvents(defaults, octokit),
-		collectMergedPulls(defaults, octokit),
-	]);
+	// 1. Collect event data from the GitHub API
+	const [acceptedIssues, issueEvents, mergedPulls, repoEvents] =
+		await Promise.all([
+			collectAcceptedIssues(defaults, octokit, options.labelAcceptingPrs),
+			collectIssueEvents(defaults, octokit),
+			collectMergedPulls(defaults, octokit),
+			collectRepoEvents(defaults, octokit),
+		]);
 
-	for (const acceptedIssue of Object.values(acceptedIssues)) {
-		const labels = acceptedIssue.labels.map((label) =>
-			typeof label === "string" ? label : label.name,
-		);
+	// 2. Process individual contributors from those events
+	const contributors = processContributors(issueEvents, repoEvents, options);
 
-		for (const [labelType, contribution] of [
-			// 🐛 `bug`: anybody who filed an issue labeled as accepting PRs and a bug
-			[options.labelTypeBug, "bug"],
-			// - 📖 `doc`: authors of merged PRs that address issues labeled as docs
-			[options.labelTypeDocs, "docs"],
-			// - 🔧 `tool`: authors of merged PRs that address issues labeled as tooling
-			[options.labelTypeTool, "tool"],
-		]) {
-			if (labels.some((label) => label === labelType)) {
-				contributors.add(
-					acceptedIssue.user?.login,
-					acceptedIssue.number,
-					contribution,
-				);
-			}
-		}
-	}
+	// 3. Add additional contributors based on issues and pulls
+	addAcceptedIssues(Object.values(acceptedIssues), contributors, options);
+	await addMergedPulls(mergedPulls, contributors, octokit);
 
-	// 💻 `code` & others: all PR authors and co-authors
-	const cachingCoAuthorToUsername = createCachingCoAuthorToUsername({
-		fetcher: octokit,
-	});
-	for (const mergedPull of mergedPulls) {
-		const authors = await parseMergedPullAuthors(
-			mergedPull,
-			cachingCoAuthorToUsername,
-		);
-		const type = parseMergedPullType(mergedPull.title);
-
-		for (const author of authors) {
-			contributors.add(author, mergedPull.number, type);
-		}
-	}
-
-	// 🚧 `maintenance`: adding labels to issues and PRs, and merging PRs
-	const maintainers = new Set<string>();
-
-	for (const event of issueEvents) {
-		if (event.actor && event.issue) {
-			contributors.add(event.actor.login, event.issue.number, "maintenance");
-			maintainers.add(event.actor.login);
-		}
-	}
-
-	// 👀 `review`: submitting a review for a PR
-	// (restricted just to users marked as maintainers)
-	for (const event of events) {
-		if (
-			eventIsPullRequestReviewEvent(event) &&
-			maintainers.has(event.actor.login)
-		) {
-			contributors.add(event.actor.login, event.issue.number, "review");
-		}
-	}
-
+	// 4. Collect the contributions under each contributor
 	return contributors.collect();
 }

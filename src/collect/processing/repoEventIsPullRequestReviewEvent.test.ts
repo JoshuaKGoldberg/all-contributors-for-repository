@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 
-import { eventIsPullRequestReviewEvent } from "./eventIsPullRequestReviewEvent.js";
+import { repoEventIsPullRequestReviewEvent } from "../processing/repoEventIsPullRequestReviewEvent.js";
 
 describe("eventIsPullRequestReviewEvent", () => {
 	it.each([
@@ -10,7 +10,7 @@ describe("eventIsPullRequestReviewEvent", () => {
 		[{ type: "PullRequestReviewEvent" }, false],
 		[{ issue: { number: 1 }, type: "PullRequestReviewEvent" }, true],
 	])("when given %j, returns %s", (event, expected) => {
-		const actual = eventIsPullRequestReviewEvent(event);
+		const actual = repoEventIsPullRequestReviewEvent(event);
 
 		expect(actual).toBe(expected);
 	});
