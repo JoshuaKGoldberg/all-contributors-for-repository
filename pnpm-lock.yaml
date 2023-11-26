@@ -5,6 +5,12 @@ settings:
   excludeLinksFromLockfile: false
 
 dependencies:
+  co-author-to-username:
+    specifier: ^0.1.0
+    version: 0.1.0
+  commit-to-co-authors:
+    specifier: ^0.1.0
+    version: 0.1.0
   conventional-commits-parser:
     specifier: ^5.0.0
     version: 5.0.0
@@ -2403,6 +2409,11 @@ packages:
       responselike: 3.0.0
     dev: true
 
+  /cached-factory@0.0.1:
+    resolution: {integrity: sha512-nlhbhyJwz++jwl5wJR9oV3E69eCfNuWbtTia+zZslORBDBCk7hwRO1EoUbHsA1c5kOGP6vWIPPSYAxA5y5VcMw==}
+    engines: {node: '>=18'}
+    dev: false
+
   /call-bind@1.0.2:
     resolution: {integrity: sha512-7O+FbCihrB5WGbFYesctwmTKae6rOiIzmz1icreWJ+0aA7LJfuqhEso2T9ncpcFtzMQtzXf2QGGueWJGTYsqrA==}
     dependencies:
@@ -2573,6 +2584,14 @@ packages:
     requiresBuild: true
     dev: true
 
+  /co-author-to-username@0.1.0:
+    resolution: {integrity: sha512-tpRatfclGzJO2LEsszgOasgOc4+OOp6kPHpCPnxpQMxdRJEMnpTGh4YtWnxWfuQEVt5wVHGMq4laaj+x6/zB7g==}
+    engines: {node: '>=18'}
+    dependencies:
+      cached-factory: 0.0.1
+      octokit: 3.0.0
+    dev: false
+
   /color-convert@1.9.3:
     resolution: {integrity: sha512-QfAUtd+vFdAtFQcC8CCyYt1fYWxSqAiK2cSD6zDB8N3cpsEBAvRxp9zOGg6G/SHHJYAT88/az/IuDGALsNVbGg==}
     dependencies:
@@ -2628,6 +2647,11 @@ packages:
     resolution: {integrity: sha512-QLyTNiZ2KDOibvFPlZ6ZngVsZ/0gYnE6uTXi5aoDg8ed3AkJAz4sEje3Y8a29hQ1s6A99MZXe47fLAXQ1rTqaw==}
     engines: {node: '>= 12.0.0'}
     dev: true
+
+  /commit-to-co-authors@0.1.0:
+    resolution: {integrity: sha512-5v1M+gBD0H7G2++D1L3z8ekVkTsIYNTuUFmL8KgIumuJdZ1CFjRulgUvYA7dFDmZNENu0G//yp+krWGcXb2WYA==}
+    engines: {node: '>=18'}
+    dev: false
 
   /compare-func@2.0.0:
     resolution: {integrity: sha512-zHig5N+tPWARooBnb0Zx1MFcdfpyJrfTJ3Y5L+IFvUm8rM74hHz66z0gw0x4tijh5CorKkKUCnW82R2vmpeCRA==}

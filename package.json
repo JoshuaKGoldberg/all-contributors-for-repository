@@ -37,6 +37,8 @@
 		"*": "prettier --ignore-unknown --write"
 	},
 	"dependencies": {
+		"co-author-to-username": "^0.1.0",
+		"commit-to-co-authors": "^0.1.0",
 		"conventional-commits-parser": "^5.0.0",
 		"octokit": "^3.0.0"
 	},

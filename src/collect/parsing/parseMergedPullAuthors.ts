@@ -1,4 +1,5 @@
-import { CachingMap } from "../../CachingMap.js";
+import { CachingCoAuthorToUsername } from "co-author-to-username";
+import { commitToCoAuthors } from "commit-to-co-authors";
 
 interface MergedPullForAuthors {
 	body?: string;
@@ -7,25 +8,17 @@ interface MergedPullForAuthors {
 
 export async function parseMergedPullAuthors(
 	mergedPull: MergedPullForAuthors,
-	authorsCache: CachingMap<string, Promise<string | undefined>>,
+	cachingCoAuthorToUsername: CachingCoAuthorToUsername,
 ) {
 	const authors: (string | undefined)[] = [];
 
 	authors.push(mergedPull.user?.login);
 
-	for (const match of mergedPull.body?.match(/co-authored-by:.+/gi) ?? []) {
-		const split = match.split(/\s+/);
+	if (mergedPull.body) {
+		const coAuthors = commitToCoAuthors(mergedPull.body);
 
-		if (/@\w+/.test(split[1])) {
-			authors.push(split[1].slice(1));
-			continue;
-		}
-
-		const email =
-			split.length > 2 && split[split.length - 1].match(/<(.+)>/)?.[1];
-		if (email) {
-			const newLocal = await authorsCache.get(email);
-			authors.push(newLocal);
+		for (const coAuthor of coAuthors) {
+			authors.push(await cachingCoAuthorToUsername(coAuthor));
 		}
 	}
 
