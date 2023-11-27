@@ -102,6 +102,7 @@ It additionally allows for the following optional options.
 - `labelAcceptingPrs` _(`string`)_: Label to indicate an issue is accepting pull requests.
 - `labelTypeBug` _(`string`)_: Label to indicate an issue is for a bug.
 - `labelTypeDocs` _(`string`)_: Label to indicate an issue is for documentation.
+- `labelTypeIdeas` _(`string`)_: Label to indicate an issue is for a feature.
 - `labelTypeTool` _(`string`)_: Label to indicate an issue is for tooling.
 
 ```ts
@@ -113,6 +114,7 @@ getAllContributorsForRepository({
 	labelAcceptingPrs: "help wanted",
 	labelTypeBug: "bug",
 	labelTypeDocs: "docs",
+	labelTypeIdeas: "feature",
 	labelTypeTool: "tool",
 });
 ```
