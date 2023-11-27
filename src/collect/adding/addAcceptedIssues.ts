@@ -20,6 +20,8 @@ export function addAcceptedIssues(
 			[options.labelTypeBug, "bug"],
 			// - 📖 `doc`: authors of merged PRs that address issues labeled as docs
 			[options.labelTypeDocs, "docs"],
+			// 💡 `ideas`: anybody who filed an issue labeled as accepting PRs and a feature
+			[options.labelTypeIdeas, "ideas"],
 			// - 🔧 `tool`: authors of merged PRs that address issues labeled as tooling
 			[options.labelTypeTool, "tool"],
 		] as const) {

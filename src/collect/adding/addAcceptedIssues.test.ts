@@ -38,6 +38,15 @@ describe("addAcceptedIssues", () => {
 		expect(add).toHaveBeenCalledWith(login, issue.number, "docs");
 	});
 
+	it("adds an issue when it has a feature label", () => {
+		const add = vi.fn();
+		const issue = createStubIssue(options.labelTypeIdeas);
+
+		addAcceptedIssues([issue], { add }, options);
+
+		expect(add).toHaveBeenCalledWith(login, issue.number, "ideas");
+	});
+
 	it("adds an issue when it has a tool label", () => {
 		const add = vi.fn();
 		const issue = createStubIssue(options.labelTypeTool);
