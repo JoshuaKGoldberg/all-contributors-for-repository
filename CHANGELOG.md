@@ -1,3 +1,9 @@
+# [0.2.0](https://github.com/JoshuaKGoldberg/all-contributors-for-repository/compare/0.1.1...0.2.0) (2023-11-27)
+
+### Features
+
+- add ideas contributions for type: feature labels ([#167](https://github.com/JoshuaKGoldberg/all-contributors-for-repository/issues/167)) ([c78dd81](https://github.com/JoshuaKGoldberg/all-contributors-for-repository/commit/c78dd812a530572fd11b75299c943b8b5f6917da)), closes [#35](https://github.com/JoshuaKGoldberg/all-contributors-for-repository/issues/35)
+
 ## [0.1.1](https://github.com/JoshuaKGoldberg/all-contributors-for-repository/compare/0.0.11...0.1.1) (2023-11-26)
 
 ### Bug Fixes
