@@ -1,3 +1,9 @@
+## [0.2.1](https://github.com/JoshuaKGoldberg/all-contributors-for-repository/compare/0.2.0...0.2.1) (2023-11-27)
+
+### Bug Fixes
+
+- include missing features option code from commit ([3a3abf8](https://github.com/JoshuaKGoldberg/all-contributors-for-repository/commit/3a3abf856557427f36e94943194194237168b826))
+
 # [0.2.0](https://github.com/JoshuaKGoldberg/all-contributors-for-repository/compare/0.1.1...0.2.0) (2023-11-27)
 
 ### Features
