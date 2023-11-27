@@ -10,6 +10,7 @@ const defaultOptions = {
 	labelAcceptingPrs: "status: accepting prs",
 	labelTypeBug: "type: bug",
 	labelTypeDocs: "type: documentation",
+	labelTypeIdeas: "type: feature",
 	labelTypeTool: "area: tooling",
 };
 
@@ -40,6 +41,11 @@ export interface RawAllContributorsForRepositoryOptions {
 	labelTypeDocs?: string;
 
 	/**
+	 * Label to indicate an issue is for a feature.
+	 */
+	labelTypeIdeas?: string;
+
+	/**
 	 * Label to indicate an issue is for tooling.
 	 */
 	labelTypeTool?: string;
@@ -61,6 +67,7 @@ export interface AllContributorsForRepositoryOptions {
 	labelAcceptingPrs: string;
 	labelTypeBug: string;
 	labelTypeDocs: string;
+	labelTypeIdeas: string;
 	labelTypeTool: string;
 	owner: string;
 	repo: string;
@@ -78,6 +85,7 @@ export function fillInOptions(
 			rawOptions.labelAcceptingPrs ?? defaultOptions.labelAcceptingPrs,
 		labelTypeBug: rawOptions.labelTypeBug ?? defaultOptions.labelTypeBug,
 		labelTypeDocs: rawOptions.labelTypeDocs ?? defaultOptions.labelTypeDocs,
+		labelTypeIdeas: rawOptions.labelTypeIdeas ?? defaultOptions.labelTypeIdeas,
 		labelTypeTool: rawOptions.labelTypeTool ?? defaultOptions.labelTypeTool,
 		owner: rawOptions.owner,
 		repo: rawOptions.repo,
