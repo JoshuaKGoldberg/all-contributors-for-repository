@@ -6,6 +6,7 @@ import { addAcceptedIssues } from "./addAcceptedIssues.js";
 const options = {
 	labelTypeBug: "labelTypeBug",
 	labelTypeDocs: "labelTypeDocs",
+	labelTypeIdeas: "labelTypeIdeas",
 	labelTypeTool: "labelTypeTool",
 };
 
