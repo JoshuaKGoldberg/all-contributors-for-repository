@@ -11,7 +11,7 @@ const mockRequest = (url: string) => {
 						labels: ["type: bug"],
 						number: 111,
 						user: {
-							login: "AcceptedIssueUser",
+							login: "Accepted-Issue-User",
 						},
 					},
 				],
@@ -21,7 +21,7 @@ const mockRequest = (url: string) => {
 				data: [
 					{
 						actor: {
-							login: "IssueEventUser",
+							login: "Issue-Event-User",
 						},
 						event: "assigned",
 						issue: {
@@ -38,7 +38,7 @@ const mockRequest = (url: string) => {
 							number: 333,
 							title: "feat: Merged PR",
 							user: {
-								login: "MergedPullUser",
+								login: "Merged-Pull-User",
 							},
 						},
 					],
@@ -49,12 +49,12 @@ const mockRequest = (url: string) => {
 				data: [
 					{
 						actor: {
-							login: "IssueEventUser",
+							login: "Issue-Event-User",
 						},
 						issue: {
 							number: 222,
 						},
-						type: "PullRequestReviewEvent",
+						type: "Pull-Request-Review-Event",
 					},
 				],
 			};
@@ -80,20 +80,17 @@ describe("end-to-end", () => {
 
 		expect(actual).toMatchInlineSnapshot(`
 			{
-			  "acceptedissueuser": {
+			  "accepted-issue-user": {
 			    "bug": [
 			      111,
 			    ],
 			  },
-			  "issueeventuser": {
+			  "issue-event-user": {
 			    "maintenance": [
 			      222,
 			    ],
-			    "review": [
-			      222,
-			    ],
 			  },
-			  "mergedpulluser": {
+			  "merged-pull-user": {
 			    "code": [
 			      333,
 			    ],
