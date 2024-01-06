@@ -12,7 +12,8 @@
         "maintenance",
         "review",
         "doc",
-        "infra"
+        "infra",
+        "test"
       ],
       "login": "JoshuaKGoldberg",
       "name": "Josh Goldberg",
