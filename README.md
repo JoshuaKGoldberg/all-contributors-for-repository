@@ -1,6 +1,6 @@
 <h1 align="center">All Contributors For Repository</h1>
 
-<p align="center">Generates an allcontributors list for an existing repository. 🤝</p>
+<p align="center">Generates an <a href="https://allcontributors.org">allcontributors</a> list for an existing repository. 🤝</p>
 
 <p align="center">
 	<a href="#contributors" target="_blank">
