@@ -18,6 +18,15 @@
       "login": "JoshuaKGoldberg",
       "name": "Josh Goldberg",
       "profile": "http://www.joshuakgoldberg.com"
+    },
+    {
+      "login": "fdlpm",
+      "name": "Fabian De La Peña Montero",
+      "avatar_url": "https://avatars.githubusercontent.com/u/9667945?v=4",
+      "profile": "https://www.fdlpm.com",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
