@@ -1,3 +1,9 @@
+## [0.2.2](https://github.com/JoshuaKGoldberg/all-contributors-for-repository/compare/0.2.1...0.2.2) (2024-01-12)
+
+### Bug Fixes
+
+- bumped packages to latest ([#217](https://github.com/JoshuaKGoldberg/all-contributors-for-repository/issues/217)) ([da1cabe](https://github.com/JoshuaKGoldberg/all-contributors-for-repository/commit/da1cabe47550d084058fa20576b958222b7d3524)), closes [#216](https://github.com/JoshuaKGoldberg/all-contributors-for-repository/issues/216)
+
 ## [0.2.1](https://github.com/JoshuaKGoldberg/all-contributors-for-repository/compare/0.2.0...0.2.1) (2023-11-27)
 
 ### Bug Fixes
