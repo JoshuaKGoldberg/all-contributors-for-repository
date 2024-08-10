@@ -38,8 +38,8 @@
 	},
 	"dependencies": {
 		"co-author-to-username": "^0.1.1",
-		"commit-to-co-authors": "^0.1.0",
 		"conventional-commits-parser": "^6.0.0",
+		"description-to-co-authors": "^0.3.0",
 		"octokit": "^4.0.0"
 	},
 	"devDependencies": {

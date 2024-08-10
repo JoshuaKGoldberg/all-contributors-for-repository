@@ -11,12 +11,12 @@ importers:
       co-author-to-username:
         specifier: ^0.1.1
         version: 0.1.1
-      commit-to-co-authors:
-        specifier: ^0.1.0
-        version: 0.1.0
       conventional-commits-parser:
         specifier: ^6.0.0
         version: 6.0.0
+      description-to-co-authors:
+        specifier: ^0.3.0
+        version: 0.3.0
       octokit:
         specifier: ^4.0.0
         version: 4.0.2
@@ -1514,11 +1514,6 @@ packages:
     resolution: {integrity: sha512-buhp5kePrmda3vhc5B9t7pUQXAb2Tnd0qgpkIhPhkHXxJpiPJ11H0ZEU0oBpJ2QztSbzG/ZxMj/CHsYJqRHmyg==}
     engines: {node: '>= 12.0.0'}
 
-  commit-to-co-authors@0.1.0:
-    resolution: {integrity: sha512-5v1M+gBD0H7G2++D1L3z8ekVkTsIYNTuUFmL8KgIumuJdZ1CFjRulgUvYA7dFDmZNENu0G//yp+krWGcXb2WYA==}
-    engines: {node: '>=18'}
-    deprecated: Renamed to description-to-co-authors. This will work for GitHub issue bodies too.
-
   compare-func@2.0.0:
     resolution: {integrity: sha512-zHig5N+tPWARooBnb0Zx1MFcdfpyJrfTJ3Y5L+IFvUm8rM74hHz66z0gw0x4tijh5CorKkKUCnW82R2vmpeCRA==}
 
@@ -1756,6 +1751,10 @@ packages:
 
   deprecation@2.3.1:
     resolution: {integrity: sha512-xmHIy4F3scKVwMsQ4WnVaS8bHOx0DmVwRywosKhaILI0ywMDWPtBSku2HNxRvF7jtwDRsoEwYQSfbxj8b7RlJQ==}
+
+  description-to-co-authors@0.3.0:
+    resolution: {integrity: sha512-GaMDuvOCmtkQ3tjjawAEl3YhxNEIsR9tmlXV4xeypGyiO75YLXRm3iHKltqrmxNgtNlppVzT2pdsPM2Yzm67CA==}
+    engines: {node: '>=18.3.0'}
 
   detect-indent@7.0.1:
     resolution: {integrity: sha512-Mc7QhQ8s+cLrnUfU/Ji94vG/r8M26m8f++vyres4ZoojaRDpZ1eSIh/EpzLNwlWuvzSZ3UbDFspjFvTDXe6e/g==}
@@ -5279,8 +5278,6 @@ snapshots:
 
   comment-parser@1.4.1: {}
 
-  commit-to-co-authors@0.1.0: {}
-
   compare-func@2.0.0:
     dependencies:
       array-ify: 1.0.0
@@ -5568,6 +5565,8 @@ snapshots:
       esprima: 4.0.1
 
   deprecation@2.3.1: {}
+
+  description-to-co-authors@0.3.0: {}
 
   detect-indent@7.0.1: {}
 

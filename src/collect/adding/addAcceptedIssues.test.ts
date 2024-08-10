@@ -11,10 +11,22 @@ const options = {
 };
 
 const login = "abc123";
+const loginCoAuthor = "other-login";
 
-const createStubIssue = (label: string) =>
+const mockDescriptionToCoAuthors = vi
+	.fn()
+	.mockReturnValue([{ username: loginCoAuthor }]);
+
+vi.mock("description-to-co-authors", () => ({
+	get descriptionToCoAuthors() {
+		return mockDescriptionToCoAuthors;
+	},
+}));
+
+const createStubIssue = ({ body, labels }: Partial<AcceptedIssue>) =>
 	({
-		labels: [label],
+		body,
+		labels,
 		number: 0,
 		user: { login },
 	}) as AcceptedIssue;
@@ -22,7 +34,9 @@ const createStubIssue = (label: string) =>
 describe("addAcceptedIssues", () => {
 	it("adds an issue when it has a bug label", () => {
 		const add = vi.fn();
-		const issue = createStubIssue(options.labelTypeBug);
+		const issue = createStubIssue({
+			labels: [options.labelTypeBug],
+		});
 
 		addAcceptedIssues([issue], { add }, options);
 
@@ -31,7 +45,9 @@ describe("addAcceptedIssues", () => {
 
 	it("adds an issue when it has a docs label", () => {
 		const add = vi.fn();
-		const issue = createStubIssue(options.labelTypeDocs);
+		const issue = createStubIssue({
+			labels: [options.labelTypeDocs],
+		});
 
 		addAcceptedIssues([issue], { add }, options);
 
@@ -40,7 +56,9 @@ describe("addAcceptedIssues", () => {
 
 	it("adds an issue when it has a feature label", () => {
 		const add = vi.fn();
-		const issue = createStubIssue(options.labelTypeIdeas);
+		const issue = createStubIssue({
+			labels: [options.labelTypeIdeas],
+		});
 
 		addAcceptedIssues([issue], { add }, options);
 
@@ -49,16 +67,46 @@ describe("addAcceptedIssues", () => {
 
 	it("adds an issue when it has a tool label", () => {
 		const add = vi.fn();
-		const issue = createStubIssue(options.labelTypeTool);
+		const issue = createStubIssue({
+			labels: [options.labelTypeTool],
+		});
 
 		addAcceptedIssues([issue], { add }, options);
 
 		expect(add).toHaveBeenCalledWith(login, issue.number, "tool");
 	});
 
+	it("adds an issue's co-author when the body includes them", () => {
+		const add = vi.fn();
+		const issue = createStubIssue({
+			body: `(mocked)`,
+			labels: [options.labelTypeTool],
+		});
+
+		addAcceptedIssues([issue], { add }, options);
+
+		expect(add).toHaveBeenCalledWith(login, issue.number, "tool");
+		expect(add).toHaveBeenCalledWith(loginCoAuthor, issue.number, "tool");
+		expect(mockDescriptionToCoAuthors).toHaveBeenCalledWith(issue.body);
+	});
+
+	it("doesn't call for co-authors when there is no issue body", () => {
+		const add = vi.fn();
+		const issue = createStubIssue({
+			labels: [options.labelTypeTool],
+		});
+
+		addAcceptedIssues([issue], { add }, options);
+
+		expect(add).toHaveBeenCalledWith(login, issue.number, "tool");
+		expect(add).toHaveBeenCalledTimes(1);
+	});
+
 	it("doesn't add an issue when it has an unrelated label", () => {
 		const add = vi.fn();
-		const issue = createStubIssue("other");
+		const issue = createStubIssue({
+			labels: ["other"],
+		});
 
 		addAcceptedIssues([issue], { add }, options);
 
