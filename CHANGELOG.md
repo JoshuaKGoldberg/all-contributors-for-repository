@@ -1,3 +1,14 @@
+# [0.3.0](https://github.com/JoshuaKGoldberg/all-contributors-for-repository/compare/0.2.2...0.3.0) (2024-08-10)
+
+### Bug Fixes
+
+- also exclude `github-actions[bot]` by default ([#440](https://github.com/JoshuaKGoldberg/all-contributors-for-repository/issues/440)) ([0e19dd4](https://github.com/JoshuaKGoldberg/all-contributors-for-repository/commit/0e19dd49d2d21288e349e74cf638970652af6210)), closes [#439](https://github.com/JoshuaKGoldberg/all-contributors-for-repository/issues/439)
+- conventional-commits-parser API update ([ab9a866](https://github.com/JoshuaKGoldberg/all-contributors-for-repository/commit/ab9a866aeb6564fbcd9537bc8de7a5e37cd48106))
+
+### Features
+
+- retrieve issue co-authors ([#445](https://github.com/JoshuaKGoldberg/all-contributors-for-repository/issues/445)) ([e761182](https://github.com/JoshuaKGoldberg/all-contributors-for-repository/commit/e761182bba37fff97f692e57e34bdfbd6d4f51a3)), closes [#252](https://github.com/JoshuaKGoldberg/all-contributors-for-repository/issues/252)
+
 ## [0.2.2](https://github.com/JoshuaKGoldberg/all-contributors-for-repository/compare/0.2.1...0.2.2) (2024-01-12)
 
 ### Bug Fixes
