@@ -1,4 +1,5 @@
 import { descriptionToCoAuthors } from "description-to-co-authors";
+
 import { ContributorsCollection } from "../../ContributorsCollection.js";
 import { AllContributorsForRepositoryOptions } from "../../options.js";
 import { AcceptedIssue } from "../collecting/collectAcceptedIssues.js";

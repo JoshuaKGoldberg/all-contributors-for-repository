@@ -10,11 +10,11 @@ module.exports = {
 		"plugin:n/recommended",
 		"plugin:perfectionist/recommended-natural",
 		"plugin:regexp/recommended",
-		"plugin:vitest/recommended",
+		"plugin:vitest/legacy-recommended",
 	],
 	overrides: [
 		{
-			extends: ["plugin:markdown/recommended"],
+			extends: ["plugin:markdown/recommended-legacy"],
 			files: ["**/*.md"],
 			processor: "markdown/markdown",
 		},
@@ -138,10 +138,6 @@ module.exports = {
 		"no-mixed-spaces-and-tabs": "off",
 
 		// Stylistic concerns that don't interfere with Prettier
-		"@typescript-eslint/padding-line-between-statements": [
-			"error",
-			{ blankLine: "always", next: "*", prev: "block-like" },
-		],
 		"perfectionist/sort-objects": [
 			"error",
 			{
