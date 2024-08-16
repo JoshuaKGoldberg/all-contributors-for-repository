@@ -45,7 +45,7 @@ import { getAllContributorsForRepository } from "all-contributors-for-repository
 
 const contributors = await getAllContributorsForRepository({
 	owner: "JoshuaKGoldberg",
-	repo: "template-typescript-node-package",
+	repo: "create-typescript-app",
 });
 
 /*
