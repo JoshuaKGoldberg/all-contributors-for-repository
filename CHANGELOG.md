@@ -1,3 +1,9 @@
+## [0.3.1](https://github.com/JoshuaKGoldberg/all-contributors-for-repository/compare/0.3.0...0.3.1) (2024-12-13)
+
+### Bug Fixes
+
+- also export type RawAllContributorsForRepositoryOptions ([bdf65b6](https://github.com/JoshuaKGoldberg/all-contributors-for-repository/commit/bdf65b678e417a95951942e528fc5c379ee22160))
+
 # [0.3.0](https://github.com/JoshuaKGoldberg/all-contributors-for-repository/compare/0.2.2...0.3.0) (2024-08-10)
 
 ### Bug Fixes
