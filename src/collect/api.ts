@@ -1,4 +1,5 @@
 import { Octokit } from "octokit";
+import { octokitFromAuthSafe } from "octokit-from-auth";
 
 const perPage = 100;
 
@@ -7,13 +8,16 @@ export interface RequestDefaults {
 	repo: string;
 }
 
-export function createOctokit(auth: string | undefined): Octokit {
-	return new (Octokit.defaults({
+export async function createOctokit(
+	auth: string | undefined,
+): Promise<Octokit> {
+	return await octokitFromAuthSafe({
+		auth,
 		headers: {
 			"X-GitHub-Api-Version": "2022-11-28",
 		},
 		per_page: perPage,
-	}))({ auth });
+	});
 }
 
 export interface RequestOptionsWithPage extends RequestDefaults {
