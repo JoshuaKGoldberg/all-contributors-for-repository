@@ -20,6 +20,9 @@ importers:
       octokit:
         specifier: ^4.0.0
         version: 4.0.2
+      octokit-from-auth:
+        specifier: ^0.3.0
+        version: 0.3.0
     devDependencies:
       '@release-it/conventional-changelog':
         specifier: ^9.0.0
@@ -2091,6 +2094,10 @@ packages:
   get-func-name@2.0.2:
     resolution: {integrity: sha512-8vXOvuE167CtIc3OyItco7N/dpRtBbYOsPsXCz7X/PMnlGjYjSGuZJgM1Y7mmew7BKf9BqvLX2tnOVy1BBUsxQ==}
 
+  get-github-auth-token@0.1.0:
+    resolution: {integrity: sha512-ENm+A39AV0X4+Ls1jiCvmqx+C8hSYTv4d5hV9Ks+EL+gx9a0P9pYYpRE1k2ExwRT3EFQabGXF1Rkdp5FIsLkiw==}
+    engines: {node: '>=18'}
+
   get-stdin@9.0.0:
     resolution: {integrity: sha512-dVKBjfWisLAicarI2Sf+JuBE/DghV4UzNAVe9yhEJuzeREd3JhOTE9cUaJTeSa77fsbQUK3pcOpJfM59+VKZaA==}
     engines: {node: '>=12'}
@@ -2935,6 +2942,10 @@ packages:
   object-assign@4.1.1:
     resolution: {integrity: sha512-rJgTQnkUnH1sFw8yT6VSU3zD3sWmu6sZhIseY8VX+GRu3P6F7Fu+JNDoXfklElbLJSnc3FUQHVe4cU5hj+BcUg==}
     engines: {node: '>=0.10.0'}
+
+  octokit-from-auth@0.3.0:
+    resolution: {integrity: sha512-HeS+YVPExV5nkdRZyQQRepZVV+pL4ahVmh9KfKXLAbNc3D82G2xeuSWfKzHSIlqB1taQnZYPJWdpfcIe45d1lw==}
+    engines: {node: '>=18.3.0'}
 
   octokit@4.0.2:
     resolution: {integrity: sha512-wbqF4uc1YbcldtiBFfkSnquHtECEIpYD78YUXI6ri1Im5OO2NLo6ZVpRdbJpdnpZ05zMrVPssNiEo6JQtea+Qg==}
@@ -5946,6 +5957,8 @@ snapshots:
 
   get-func-name@2.0.2: {}
 
+  get-github-auth-token@0.1.0: {}
+
   get-stdin@9.0.0: {}
 
   get-stream@6.0.1: {}
@@ -6916,6 +6929,11 @@ snapshots:
       path-key: 4.0.0
 
   object-assign@4.1.1: {}
+
+  octokit-from-auth@0.3.0:
+    dependencies:
+      get-github-auth-token: 0.1.0
+      octokit: 4.0.2
 
   octokit@4.0.2:
     dependencies:

@@ -61,13 +61,15 @@ const mockRequest = (url: string) => {
 	}
 };
 
-vi.mock("octokit", () => ({
-	get Octokit() {
-		return class MockOctokit {
+vi.mock("octokit-from-auth", () => ({
+	octokitFromAuthSafe() {
+		class MockOctokit {
 			static defaults = () => MockOctokit;
 
 			request = mockRequest;
-		};
+		}
+
+		return Promise.resolve(new MockOctokit());
 	},
 }));
 

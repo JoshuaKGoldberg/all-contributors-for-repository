@@ -13,7 +13,7 @@ export async function collect(
 	options: AllContributorsForRepositoryOptions,
 ): Promise<ContributorsContributions> {
 	const defaults = { owner: options.owner, repo: options.repo };
-	const octokit = createOctokit(options.auth);
+	const octokit = await createOctokit(options.auth);
 
 	// 1. Collect event data from the GitHub API
 	const [acceptedIssues, issueEvents, mergedPulls, repoEvents] =
