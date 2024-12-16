@@ -17,9 +17,6 @@ importers:
       description-to-co-authors:
         specifier: ^0.3.0
         version: 0.3.0
-      get-github-auth-token:
-        specifier: ^0.1.0
-        version: 0.1.0
       octokit:
         specifier: ^4.0.0
         version: 4.0.2
