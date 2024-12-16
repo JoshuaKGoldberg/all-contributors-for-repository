@@ -1,3 +1,9 @@
+# [0.4.0](https://github.com/JoshuaKGoldberg/all-contributors-for-repository/compare/0.3.1...0.4.0) (2024-12-16)
+
+### Features
+
+- use octokit-from-auth for optional auth token ([#648](https://github.com/JoshuaKGoldberg/all-contributors-for-repository/issues/648)) ([7a3d14d](https://github.com/JoshuaKGoldberg/all-contributors-for-repository/commit/7a3d14d3eb3b586c6c4994109ccd9387559b4f51)), closes [#647](https://github.com/JoshuaKGoldberg/all-contributors-for-repository/issues/647)
+
 ## [0.3.1](https://github.com/JoshuaKGoldberg/all-contributors-for-repository/compare/0.3.0...0.3.1) (2024-12-13)
 
 ### Bug Fixes
