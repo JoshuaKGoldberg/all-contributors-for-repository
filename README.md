@@ -86,6 +86,8 @@ Additionally, based on PR [conventional commit titles](https://www.conventionalc
 > 	await $`npx all-contributors add ${contributor} ${contributionTypes}`;
 > }
 > ```
+>
+> See [populate-all-contributors-for-repository](https://github.com/JoshuaKGoldberg/populate-all-contributors-for-repository) for a project that does just that. 📋
 
 ### Options
 
