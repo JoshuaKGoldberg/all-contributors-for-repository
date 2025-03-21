@@ -1,6 +1,7 @@
 {
-	"dictionaries": ["typescript"],
+	"dictionaries": ["npm", "node", "typescript"],
 	"ignorePaths": [
+		".all-contributorsrc",
 		".github",
 		"CHANGELOG.md",
 		"coverage",
@@ -9,22 +10,10 @@
 		"pnpm-lock.yaml"
 	],
 	"words": [
-		"allcontributors",
-		"Codecov",
-		"codespace",
-		"commitlint",
-		"contributorsrc",
-		"conventionalcommits",
-		"execa",
+		"apexskier",
+		"automerge",
 		"joshuakgoldberg",
-		"knip",
-		"lcov",
 		"markdownlintignore",
-		"npmpackagejsonlintrc",
-		"outro",
-		"packagejson",
-		"quickstart",
-		"tsup",
-		"wontfix"
+		"tseslint"
 	]
 }

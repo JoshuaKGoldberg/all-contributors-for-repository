@@ -1,10 +1,10 @@
 import { RepoEvent } from "../collecting/collectRepoEvents.js";
 
-export type PullRequestReviewEvent = {
+export type PullRequestReviewEvent = RepoEvent & {
 	issue: {
 		number: number;
 	};
-} & RepoEvent;
+};
 
 export function repoEventIsPullRequestReviewEvent(
 	repoEvent: Pick<RepoEvent, "type">,
