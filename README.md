@@ -18,8 +18,6 @@
 	<img alt="💪 TypeScript: Strict" src="https://img.shields.io/badge/%F0%9F%92%AA_typescript-strict-21bb42.svg" />
 </p>
 
-<img align="right" alt="All Contributors: 2" src="<https://img.shields.io/badge/all_contributors-2-21bb42.svg>" ">
-
 ## Usage
 
 ```shell
