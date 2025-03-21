@@ -1,6 +1,6 @@
 import { Octokit } from "octokit";
 
-import { RequestDefaults, paginate } from "../api.js";
+import { paginate, RequestDefaults } from "../api.js";
 
 export type RepoEvent = Awaited<ReturnType<typeof collectRepoEvents>>[number];
 

@@ -3,7 +3,7 @@ import { descriptionToCoAuthors } from "description-to-co-authors";
 
 interface MergedPullForAuthors {
 	body?: string;
-	user?: { login?: string } | null;
+	user?: null | { login?: string };
 }
 
 export async function parseMergedPullAuthors(

@@ -4,6 +4,20 @@ import { getAllContributorsForRepository } from "./index.js";
 
 const mockRequest = (url: string) => {
 	switch (url) {
+		case "GET /repos/{owner}/{repo}/events":
+			return {
+				data: [
+					{
+						actor: {
+							login: "Issue-Event-User",
+						},
+						issue: {
+							number: 222,
+						},
+						type: "Pull-Request-Review-Event",
+					},
+				],
+			};
 		case "GET /repos/{owner}/{repo}/issues":
 			return {
 				data: [
@@ -44,29 +58,15 @@ const mockRequest = (url: string) => {
 					],
 				},
 			};
-		case "GET /repos/{owner}/{repo}/events":
-			return {
-				data: [
-					{
-						actor: {
-							login: "Issue-Event-User",
-						},
-						issue: {
-							number: 222,
-						},
-						type: "Pull-Request-Review-Event",
-					},
-				],
-			};
 	}
 };
 
 vi.mock("octokit-from-auth", () => ({
 	octokitFromAuthSafe() {
 		class MockOctokit {
-			static defaults = () => MockOctokit;
-
 			request = mockRequest;
+
+			static defaults = () => MockOctokit;
 		}
 
 		return Promise.resolve(new MockOctokit());

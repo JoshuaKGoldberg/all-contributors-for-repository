@@ -1,4 +1,4 @@
-<!-- 👋 Hi, thanks for sending a PR to all-contributors-for-repository! 💖.
+<!-- 👋 Hi, thanks for sending a PR to all-contributors-for-repository! 🤝.
 Please fill out all fields below and make sure each item is true and [x] checked.
 Otherwise we may not be able to review your PR. -->
 

@@ -16,6 +16,18 @@ const defaultOptions = {
 	labelTypeTool: "area: tooling",
 };
 
+export interface AllContributorsForRepositoryOptions {
+	auth?: string;
+	ignoredLogins: Set<string>;
+	labelAcceptingPrs: string;
+	labelTypeBug: string;
+	labelTypeDocs: string;
+	labelTypeIdeas: string;
+	labelTypeTool: string;
+	owner: string;
+	repo: string;
+}
+
 export interface RawAllContributorsForRepositoryOptions {
 	/**
 	 * GitHub auth token to query the API with, if necessary for private repositories and/or to avoid rate limiting.
@@ -60,18 +72,6 @@ export interface RawAllContributorsForRepositoryOptions {
 	/**
 	 *  The name of the repository to query, such as `"all-contributors-for-repository"`.
 	 */
-	repo: string;
-}
-
-export interface AllContributorsForRepositoryOptions {
-	auth?: string;
-	ignoredLogins: Set<string>;
-	labelAcceptingPrs: string;
-	labelTypeBug: string;
-	labelTypeDocs: string;
-	labelTypeIdeas: string;
-	labelTypeTool: string;
-	owner: string;
 	repo: string;
 }
 

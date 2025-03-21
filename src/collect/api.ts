@@ -8,6 +8,11 @@ export interface RequestDefaults {
 	repo: string;
 }
 
+export interface RequestOptionsWithPage extends RequestDefaults {
+	page: number;
+	per_page: number;
+}
+
 export async function createOctokit(
 	auth: string | undefined,
 ): Promise<Octokit> {
@@ -18,11 +23,6 @@ export async function createOctokit(
 		},
 		per_page: perPage,
 	});
-}
-
-export interface RequestOptionsWithPage extends RequestDefaults {
-	page: number;
-	per_page: number;
 }
 
 export async function paginate<T>(
