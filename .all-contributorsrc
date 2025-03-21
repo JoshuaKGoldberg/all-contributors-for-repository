@@ -3,7 +3,16 @@
 	"contributors": [
 		{
 			"avatar_url": "https://avatars.githubusercontent.com/u/3335181?v=4",
-			"contributions": ["tool", "code", "maintenance", "doc", "infra", "ideas"],
+			"contributions": [
+				"tool",
+				"code",
+				"maintenance",
+				"doc",
+				"infra",
+				"ideas",
+				"content",
+				"projectManagement"
+			],
 			"login": "JoshuaKGoldberg",
 			"name": "Josh Goldberg",
 			"profile": "http://www.joshuakgoldberg.com"
