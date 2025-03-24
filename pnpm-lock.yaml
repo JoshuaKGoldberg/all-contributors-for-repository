@@ -100,7 +100,7 @@ importers:
         specifier: 0.44.0
         version: 0.44.0
       prettier:
-        specifier: 3.5.3
+        specifier: ^3.5.3
         version: 3.5.3
       prettier-plugin-curly:
         specifier: 0.3.1
