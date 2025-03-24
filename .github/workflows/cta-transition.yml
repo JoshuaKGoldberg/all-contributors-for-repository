@@ -24,8 +24,8 @@ jobs:
         with:
           issue: ${{ github.event.pull_request.number }}
           message: |
-            🤖 Beep boop! I ran `npx create-typescript-app` and found same changes.
-            Please review the latest commit to see if you want to merge it.
+            🤖 Beep boop! I ran `npx create-typescript-app` and found code changes.
+            I've gone ahead and committed them to this PR branch for you. Please review the latest commit to see if you want to merge it.
             Cheers! 💝
           repo-token: "${{ secrets.ACCESS_TOKEN }}"
 
