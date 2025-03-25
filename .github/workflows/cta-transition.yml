@@ -4,7 +4,7 @@ jobs:
     name: Run CTA Transition Mode
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
         with:
           fetch-depth: 0
           ref: ${{github.head_ref}}
@@ -14,13 +14,13 @@ jobs:
       - run: npx create-typescript-app
       - run: git status
       - run: git diff HEAD
-      - uses: stefanzweifel/git-auto-commit-action@v5
+      - uses: stefanzweifel/git-auto-commit-action@e348103e9026cc0eee72ae06630dbe30c8bf7a79 # v5
         with:
           commit_author: "The Friendly Bingo Bot <bot@create.bingo>"
           commit_message: "Check in changes from re-running npx create-typescript-app"
           commit_user_email: "bot@create.bingo"
           commit_user_name: "The Friendly Bingo Bot"
-      - uses: mshick/add-pr-comment@v2
+      - uses: mshick/add-pr-comment@b8f338c590a895d50bcbfa6c5859251edc8952fc # v2
         with:
           issue: ${{ github.event.pull_request.number }}
           message: |
