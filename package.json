@@ -38,7 +38,7 @@
 		"co-author-to-username": "^0.1.1",
 		"conventional-commits-parser": "^6.0.0",
 		"description-to-co-authors": "^0.3.0",
-		"octokit": "^4.0.0",
+		"octokit": "^5.0.0",
 		"octokit-from-auth": "^0.3.0"
 	},
 	"devDependencies": {
