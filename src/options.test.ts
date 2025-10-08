@@ -15,6 +15,8 @@ describe("fillInOptions", () => {
 			  "ignoredLogins": Set {
 			    "allcontributors",
 			    "allcontributors[bot]",
+			    "copilot",
+			    "copilot[bot]",
 			    "dependabot",
 			    "dependabot[bot]",
 			    "github-actions",

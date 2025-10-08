@@ -84,7 +84,7 @@ It additionally allows for the following optional options.
 
 - `auth` _(`string`)_: GitHub auth token to query the API with, if necessary for private repositories and/or to avoid rate limiting.
 - `ignoredLogins` _(`string[]`)_: Usernames to ignore commits from, such as bot and bot-like users.
-  - Default: `"allcontributors"`, `"allcontributors[bot]"`, `"dependabot"`, `"dependabot[bot]"`, `"renovate"`, `"renovate[bot]"`
+  - Default: `"allcontributors"`, `"allcontributors[bot]"`, `"copilot"`, `"copilot[bot]"`, `"dependabot"`, `"dependabot[bot]"`, `"renovate"`, `"renovate[bot]"`
 - `labelAcceptingPrs` _(`string`)_: Label to indicate an issue is accepting pull requests.
 - `labelTypeBug` _(`string`)_: Label to indicate an issue is for a bug.
 - `labelTypeDocs` _(`string`)_: Label to indicate an issue is for documentation.

@@ -38,8 +38,21 @@ describe("ContributorsCollection", () => {
 		});
 	});
 
-	it("does not add a login contribution when it is ignored", () => {
+	it("does not add a login contribution when its exact case is ignored", () => {
 		const contributors = new ContributorsCollection(new Set(["ignored"]));
+
+		contributors.add("abc", 1, "bug");
+		contributors.add("ignored", 2, "code");
+
+		const actual = contributors.collect();
+
+		expect(actual).toEqual({
+			abc: { bug: [1] },
+		});
+	});
+
+	it("does not add a login contribution when a different case is ignored", () => {
+		const contributors = new ContributorsCollection(new Set(["Ignored"]));
 
 		contributors.add("abc", 1, "bug");
 		contributors.add("ignored", 2, "code");

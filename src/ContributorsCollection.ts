@@ -18,16 +18,25 @@ export class ContributorsCollection {
 	#ignoredLogins: Set<string>;
 
 	constructor(ignoredLogins: Set<string>) {
-		this.#ignoredLogins = ignoredLogins;
+		this.#ignoredLogins = new Set(
+			Array.from(ignoredLogins).map((login) => login.toLowerCase()),
+		);
 	}
 
 	add(login: string | undefined, number: number, type: string) {
-		if (login && !this.#ignoredLogins.has(login)) {
-			(this.#contributors[login.toLowerCase()] ??= new Contributor()).add(
-				number,
-				type,
-			);
+		if (!login) {
+			return;
 		}
+
+		const loginNormalized = login.toLowerCase();
+		if (this.#ignoredLogins.has(loginNormalized)) {
+			return;
+		}
+
+		(this.#contributors[loginNormalized] ??= new Contributor()).add(
+			number,
+			type,
+		);
 	}
 
 	collect(): ContributorsContributions {
