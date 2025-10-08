@@ -19,6 +19,8 @@ describe("fillInOptions", () => {
 			    "copilot[bot]",
 			    "dependabot",
 			    "dependabot[bot]",
+			    "github-actions",
+			    "github-actions[bot]",
 			    "renovate",
 			    "renovate[bot]",
 			  },

@@ -1,37 +1,21 @@
 <h1 align="center">All Contributors For Repository</h1>
 
-<p align="center">Generates an allcontributors list for an existing repository. 🤝</p>
-
 <p align="center">
-	<a href="#contributors" target="_blank">
-<!-- prettier-ignore-start -->
-<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-<img alt="All Contributors: 1" src="https://img.shields.io/badge/all_contributors-1-21bb42.svg" />
-<!-- ALL-CONTRIBUTORS-BADGE:END -->
-<!-- prettier-ignore-end -->
-</a>
-	<a href="https://codecov.io/gh/JoshuaKGoldberg/all-contributors-for-repository" target="_blank">
-		<img alt="Codecov Test Coverage" src="https://codecov.io/gh/JoshuaKGoldberg/all-contributors-for-repository/branch/main/graph/badge.svg"/>
-	</a>
-	<a href="https://github.com/JoshuaKGoldberg/all-contributors-for-repository/blob/main/.github/CODE_OF_CONDUCT.md" target="_blank">
-		<img alt="Contributor Covenant" src="https://img.shields.io/badge/code_of_conduct-enforced-21bb42" />
-	</a>
-	<a href="https://github.com/JoshuaKGoldberg/all-contributors-for-repository/blob/main/LICENSE.md" target="_blank">
-		<img alt="License: MIT" src="https://img.shields.io/github/license/JoshuaKGoldberg/all-contributors-for-repository?color=21bb42">
-	</a>
-	<a href="https://github.com/sponsors/JoshuaKGoldberg" target="_blank">
-		<img alt="Sponsor: On GitHub" src="https://img.shields.io/badge/sponsor-on_github-21bb42.svg" />
-	</a>
-	<img alt="Style: Prettier" src="https://img.shields.io/badge/style-prettier-21bb42.svg" />
-	<img alt="TypeScript: Strict" src="https://img.shields.io/badge/typescript-strict-21bb42.svg" />
-	<img alt="npm package version" src="https://img.shields.io/npm/v/all-contributors-for-repository?color=21bb42" />
-	<img alt="Sponsor: On GitHub" src="https://img.shields.io/badge/sponsor-on_github-21bb42.svg" />
+	Generates an allcontributors list for an existing repository.
+	🤝
 </p>
 
 <p align="center">
-	<em>
-		✨ See this tool in action with <a href="https://github.com/JoshuaKGoldberg/all-contributors-auto-action">all-contributors-auto-action</a>! ✨
-	</em>
+	<!-- prettier-ignore-start -->
+	<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
+	<a href="#contributors" target="_blank"><img alt="👪 All Contributors: 2" src="https://img.shields.io/badge/%F0%9F%91%AA_all_contributors-2-21bb42.svg" /></a>
+<!-- ALL-CONTRIBUTORS-BADGE:END -->
+	<!-- prettier-ignore-end -->
+	<a href="https://github.com/JoshuaKGoldberg/all-contributors-for-repository/blob/main/.github/CODE_OF_CONDUCT.md" target="_blank"><img alt="🤝 Code of Conduct: Kept" src="https://img.shields.io/badge/%F0%9F%A4%9D_code_of_conduct-kept-21bb42" /></a>
+	<a href="https://codecov.io/gh/JoshuaKGoldberg/all-contributors-for-repository" target="_blank"><img alt="🧪 Coverage" src="https://img.shields.io/codecov/c/github/JoshuaKGoldberg/all-contributors-for-repository?label=%F0%9F%A7%AA%20coverage" /></a>
+	<a href="https://github.com/JoshuaKGoldberg/all-contributors-for-repository/blob/main/LICENSE.md" target="_blank"><img alt="📝 License: MIT" src="https://img.shields.io/badge/%F0%9F%93%9D_license-MIT-21bb42.svg"></a>
+	<a href="http://npmjs.com/package/all-contributors-for-repository"><img alt="📦 npm version" src="https://img.shields.io/npm/v/all-contributors-for-repository?color=21bb42&label=%F0%9F%93%A6%20npm" /></a>
+	<img alt="💪 TypeScript: Strict" src="https://img.shields.io/badge/%F0%9F%92%AA_typescript-strict-21bb42.svg" />
 </p>
 
 ## Usage
@@ -45,7 +29,7 @@ import { getAllContributorsForRepository } from "all-contributors-for-repository
 
 const contributors = await getAllContributorsForRepository({
 	owner: "JoshuaKGoldberg",
-	repo: "template-typescript-node-package",
+	repo: "create-typescript-app",
 });
 
 /*
@@ -86,6 +70,8 @@ Additionally, based on PR [conventional commit titles](https://www.conventionalc
 > 	await $`npx all-contributors add ${contributor} ${contributionTypes}`;
 > }
 > ```
+>
+> See [populate-all-contributors-for-repository](https://github.com/JoshuaKGoldberg/populate-all-contributors-for-repository) for a project that does just that. 📋
 
 ### Options
 
@@ -122,7 +108,7 @@ getAllContributorsForRepository({
 ## Development
 
 See [`.github/CONTRIBUTING.md`](./.github/CONTRIBUTING.md), then [`.github/DEVELOPMENT.md`](./.github/DEVELOPMENT.md).
-Thanks! 💖
+Thanks! 🤝
 
 ## Contributors
 
@@ -133,7 +119,8 @@ Thanks! 💖
 <table>
   <tbody>
     <tr>
-      <td align="center" valign="top" width="14.28%"><a href="http://www.joshuakgoldberg.com"><img src="https://avatars.githubusercontent.com/u/3335181?v=4?s=100" width="100px;" alt="Josh Goldberg"/><br /><sub><b>Josh Goldberg</b></sub></a><br /><a href="#tool-JoshuaKGoldberg" title="Tools">🔧</a> <a href="https://github.com/JoshuaKGoldberg/all-contributors-for-repository/issues?q=author%3AJoshuaKGoldberg" title="Bug reports">🐛</a> <a href="https://github.com/JoshuaKGoldberg/all-contributors-for-repository/commits?author=JoshuaKGoldberg" title="Code">💻</a> <a href="#maintenance-JoshuaKGoldberg" title="Maintenance">🚧</a> <a href="https://github.com/JoshuaKGoldberg/all-contributors-for-repository/pulls?q=is%3Apr+reviewed-by%3AJoshuaKGoldberg" title="Reviewed Pull Requests">👀</a> <a href="https://github.com/JoshuaKGoldberg/all-contributors-for-repository/commits?author=JoshuaKGoldberg" title="Documentation">📖</a> <a href="#infra-JoshuaKGoldberg" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://www.fdlpm.com"><img src="https://avatars.githubusercontent.com/u/9667945?v=4?s=100" width="100px;" alt="Fabian De La Peña Montero"/><br /><sub><b>Fabian De La Peña Montero</b></sub></a><br /><a href="https://github.com/JoshuaKGoldberg/all-contributors-for-repository/commits?author=fdlpm" title="Documentation">📖</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="http://www.joshuakgoldberg.com"><img src="https://avatars.githubusercontent.com/u/3335181?v=4?s=100" width="100px;" alt="Josh Goldberg"/><br /><sub><b>Josh Goldberg</b></sub></a><br /><a href="#tool-JoshuaKGoldberg" title="Tools">🔧</a> <a href="https://github.com/JoshuaKGoldberg/all-contributors-for-repository/commits?author=JoshuaKGoldberg" title="Code">💻</a> <a href="#maintenance-JoshuaKGoldberg" title="Maintenance">🚧</a> <a href="https://github.com/JoshuaKGoldberg/all-contributors-for-repository/commits?author=JoshuaKGoldberg" title="Documentation">📖</a> <a href="#infra-JoshuaKGoldberg" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a> <a href="#ideas-JoshuaKGoldberg" title="Ideas, Planning, & Feedback">🤔</a> <a href="#content-JoshuaKGoldberg" title="Content">🖋</a> <a href="#projectManagement-JoshuaKGoldberg" title="Project Management">📆</a></td>
     </tr>
   </tbody>
 </table>
@@ -144,4 +131,6 @@ Thanks! 💖
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 <!-- spellchecker: enable -->
 
-> 💙 This package is based on [@JoshuaKGoldberg](https://github.com/JoshuaKGoldberg)'s [create-typescript-app](https://github.com/JoshuaKGoldberg/create-typescript-app).
+<!-- You can remove this notice if you don't want it 🙂 no worries! -->
+
+> 💝 This package was templated with [`create-typescript-app`](https://github.com/JoshuaKGoldberg/create-typescript-app) using the [Bingo engine](https://create.bingo).

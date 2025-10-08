@@ -23,7 +23,6 @@ export class ContributorsCollection {
 
 	add(login: string | undefined, number: number, type: string) {
 		if (login && !this.#ignoredLogins.has(login.toLowerCase())) {
-			// eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
 			(this.#contributors[login.toLowerCase()] ??= new Contributor()).add(
 				number,
 				type,

@@ -1,9 +1,9 @@
 import { CachingCoAuthorToUsername } from "co-author-to-username";
-import { commitToCoAuthors } from "commit-to-co-authors";
+import { descriptionToCoAuthors } from "description-to-co-authors";
 
 interface MergedPullForAuthors {
 	body?: string;
-	user?: { login?: string } | null;
+	user?: null | { login?: string };
 }
 
 export async function parseMergedPullAuthors(
@@ -15,7 +15,7 @@ export async function parseMergedPullAuthors(
 	authors.push(mergedPull.user?.login);
 
 	if (mergedPull.body) {
-		const coAuthors = commitToCoAuthors(mergedPull.body);
+		const coAuthors = descriptionToCoAuthors(mergedPull.body);
 
 		for (const coAuthor of coAuthors) {
 			authors.push(await cachingCoAuthorToUsername(coAuthor));

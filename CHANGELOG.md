@@ -1,3 +1,38 @@
+# [0.4.0](https://github.com/JoshuaKGoldberg/all-contributors-for-repository/compare/0.3.1...0.4.0) (2024-12-16)
+
+### Features
+
+- use octokit-from-auth for optional auth token ([#648](https://github.com/JoshuaKGoldberg/all-contributors-for-repository/issues/648)) ([7a3d14d](https://github.com/JoshuaKGoldberg/all-contributors-for-repository/commit/7a3d14d3eb3b586c6c4994109ccd9387559b4f51)), closes [#647](https://github.com/JoshuaKGoldberg/all-contributors-for-repository/issues/647)
+
+## [0.3.1](https://github.com/JoshuaKGoldberg/all-contributors-for-repository/compare/0.3.0...0.3.1) (2024-12-13)
+
+### Bug Fixes
+
+- also export type RawAllContributorsForRepositoryOptions ([bdf65b6](https://github.com/JoshuaKGoldberg/all-contributors-for-repository/commit/bdf65b678e417a95951942e528fc5c379ee22160))
+
+# [0.3.0](https://github.com/JoshuaKGoldberg/all-contributors-for-repository/compare/0.2.2...0.3.0) (2024-08-10)
+
+### Bug Fixes
+
+- also exclude `github-actions[bot]` by default ([#440](https://github.com/JoshuaKGoldberg/all-contributors-for-repository/issues/440)) ([0e19dd4](https://github.com/JoshuaKGoldberg/all-contributors-for-repository/commit/0e19dd49d2d21288e349e74cf638970652af6210)), closes [#439](https://github.com/JoshuaKGoldberg/all-contributors-for-repository/issues/439)
+- conventional-commits-parser API update ([ab9a866](https://github.com/JoshuaKGoldberg/all-contributors-for-repository/commit/ab9a866aeb6564fbcd9537bc8de7a5e37cd48106))
+
+### Features
+
+- retrieve issue co-authors ([#445](https://github.com/JoshuaKGoldberg/all-contributors-for-repository/issues/445)) ([e761182](https://github.com/JoshuaKGoldberg/all-contributors-for-repository/commit/e761182bba37fff97f692e57e34bdfbd6d4f51a3)), closes [#252](https://github.com/JoshuaKGoldberg/all-contributors-for-repository/issues/252)
+
+## [0.2.2](https://github.com/JoshuaKGoldberg/all-contributors-for-repository/compare/0.2.1...0.2.2) (2024-01-12)
+
+### Bug Fixes
+
+- bumped packages to latest ([#217](https://github.com/JoshuaKGoldberg/all-contributors-for-repository/issues/217)) ([da1cabe](https://github.com/JoshuaKGoldberg/all-contributors-for-repository/commit/da1cabe47550d084058fa20576b958222b7d3524)), closes [#216](https://github.com/JoshuaKGoldberg/all-contributors-for-repository/issues/216)
+
+## [0.2.1](https://github.com/JoshuaKGoldberg/all-contributors-for-repository/compare/0.2.0...0.2.1) (2023-11-27)
+
+### Bug Fixes
+
+- include missing features option code from commit ([3a3abf8](https://github.com/JoshuaKGoldberg/all-contributors-for-repository/commit/3a3abf856557427f36e94943194194237168b826))
+
 # [0.2.0](https://github.com/JoshuaKGoldberg/all-contributors-for-repository/compare/0.1.1...0.2.0) (2023-11-27)
 
 ### Features

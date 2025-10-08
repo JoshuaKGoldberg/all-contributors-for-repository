@@ -1,7 +1,7 @@
 import { collect } from "./collect/index.js";
 import {
-	RawAllContributorsForRepositoryOptions,
 	fillInOptions,
+	RawAllContributorsForRepositoryOptions,
 } from "./options.js";
 
 export async function getAllContributorsForRepository(

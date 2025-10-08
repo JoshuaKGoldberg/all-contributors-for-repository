@@ -1,0 +1,37 @@
+jobs:
+  cta_transition:
+    if: (github.actor == 'JoshuaKGoldberg' || github.actor == 'renovate[bot]') && contains(github.event.pull_request.title, 'create-typescript-app') && startsWith(github.head_ref, 'renovate/')
+    name: Run CTA Transition Mode
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5
+        with:
+          fetch-depth: 0
+          ref: ${{github.head_ref}}
+          repository: ${{github.event.pull_request.head.repo.full_name}}
+          token: "${{ secrets.ACCESS_TOKEN }}"
+      - uses: ./.github/actions/prepare
+      - run: npx create-typescript-app
+      - run: git status
+      - run: git diff HEAD
+      - uses: stefanzweifel/git-auto-commit-action@778341af668090896ca464160c2def5d1d1a3eb0 # v6
+        with:
+          commit_author: "The Friendly Bingo Bot <bot@create.bingo>"
+          commit_message: "Check in changes from re-running npx create-typescript-app"
+          commit_user_email: "bot@create.bingo"
+          commit_user_name: "The Friendly Bingo Bot"
+      - uses: mshick/add-pr-comment@b8f338c590a895d50bcbfa6c5859251edc8952fc # v2
+        with:
+          issue: ${{ github.event.pull_request.number }}
+          message: |
+            🤖 Beep boop! I ran `npx create-typescript-app` and found code changes.
+            I've gone ahead and committed them to this PR branch for you. Please review the latest commit to see if you want to merge it.
+            Cheers! 💝
+          repo-token: "${{ secrets.ACCESS_TOKEN }}"
+
+name: CTA Transitions
+
+on:
+  pull_request_target:
+    branches:
+      - main

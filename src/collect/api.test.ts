@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 
-import { RequestOptionsWithPage, paginate } from "./api.js";
+import { paginate, RequestOptionsWithPage } from "./api.js";
 
 const defaults = {
 	owner: "",

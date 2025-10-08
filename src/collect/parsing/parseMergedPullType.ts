@@ -1,4 +1,4 @@
-import conventionalCommitsParser from "conventional-commits-parser";
+import { CommitParser } from "conventional-commits-parser";
 
 const allContributorsTypes = new Map([
 	["build", "infra"],
@@ -7,8 +7,10 @@ const allContributorsTypes = new Map([
 	["test", "test"],
 ]);
 
+const parser = new CommitParser();
+
 export function parseMergedPullType(title: string) {
-	const { type } = conventionalCommitsParser.sync(title);
+	const { type } = parser.parse(title);
 
 	return (type && allContributorsTypes.get(type)) ?? "code";
 }
