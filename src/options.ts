@@ -2,6 +2,8 @@ const defaultOptions = {
 	ignoredLogins: [
 		"allcontributors",
 		"allcontributors[bot]",
+		"copilot",
+		"copilot[bot]",
 		"dependabot",
 		"dependabot[bot]",
 		"renovate",
