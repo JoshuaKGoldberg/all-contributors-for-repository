@@ -29,13 +29,14 @@ export class ContributorsCollection {
 		}
 
 		const loginNormalized = login.toLowerCase();
-
-		if (!this.#ignoredLogins.has(loginNormalized)) {
-			(this.#contributors[loginNormalized] ??= new Contributor()).add(
-				number,
-				type,
-			);
+		if (this.#ignoredLogins.has(loginNormalized)) {
+			return;
 		}
+
+		(this.#contributors[loginNormalized] ??= new Contributor()).add(
+			number,
+			type,
+		);
 	}
 
 	collect(): ContributorsContributions {
