@@ -40,7 +40,7 @@ describe("addAcceptedIssues", () => {
 
 		addAcceptedIssues([issue], { add }, options);
 
-		expect(add).toHaveBeenCalledWith(login, issue.number, "bug");
+		expect(add).toHaveBeenCalledExactlyOnceWith(login, issue.number, "bug");
 	});
 
 	it("adds an issue when it has a docs label", () => {
@@ -51,7 +51,7 @@ describe("addAcceptedIssues", () => {
 
 		addAcceptedIssues([issue], { add }, options);
 
-		expect(add).toHaveBeenCalledWith(login, issue.number, "docs");
+		expect(add).toHaveBeenCalledExactlyOnceWith(login, issue.number, "docs");
 	});
 
 	it("adds an issue when it has a feature label", () => {
@@ -62,7 +62,7 @@ describe("addAcceptedIssues", () => {
 
 		addAcceptedIssues([issue], { add }, options);
 
-		expect(add).toHaveBeenCalledWith(login, issue.number, "ideas");
+		expect(add).toHaveBeenCalledExactlyOnceWith(login, issue.number, "ideas");
 	});
 
 	it("adds an issue when it has a tool label", () => {
@@ -73,7 +73,7 @@ describe("addAcceptedIssues", () => {
 
 		addAcceptedIssues([issue], { add }, options);
 
-		expect(add).toHaveBeenCalledWith(login, issue.number, "tool");
+		expect(add).toHaveBeenCalledExactlyOnceWith(login, issue.number, "tool");
 	});
 
 	it("adds an issue's co-author when the body includes them", () => {
@@ -85,9 +85,13 @@ describe("addAcceptedIssues", () => {
 
 		addAcceptedIssues([issue], { add }, options);
 
-		expect(add).toHaveBeenCalledWith(login, issue.number, "tool");
-		expect(add).toHaveBeenCalledWith(loginCoAuthor, issue.number, "tool");
-		expect(mockDescriptionToCoAuthors).toHaveBeenCalledWith(issue.body);
+		expect(add.mock.calls).toEqual([
+			[login, issue.number, "tool"],
+			[loginCoAuthor, issue.number, "tool"],
+		]);
+		expect(mockDescriptionToCoAuthors).toHaveBeenCalledExactlyOnceWith(
+			issue.body,
+		);
 	});
 
 	it("doesn't call for co-authors when there is no issue body", () => {
@@ -98,7 +102,7 @@ describe("addAcceptedIssues", () => {
 
 		addAcceptedIssues([issue], { add }, options);
 
-		expect(add).toHaveBeenCalledWith(login, issue.number, "tool");
+		expect(add).toHaveBeenCalledExactlyOnceWith(login, issue.number, "tool");
 		expect(add).toHaveBeenCalledTimes(1);
 	});
 

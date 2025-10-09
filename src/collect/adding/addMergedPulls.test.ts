@@ -34,6 +34,10 @@ describe("addMergedPulls", () => {
 
 		await addMergedPulls([mergedPull], { add }, vi.fn() as unknown as Octokit);
 
-		expect(add).toHaveBeenCalledWith(author, mergedPull.number, "code");
+		expect(add).toHaveBeenCalledExactlyOnceWith(
+			author,
+			mergedPull.number,
+			"code",
+		);
 	});
 });
