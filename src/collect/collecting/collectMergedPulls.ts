@@ -10,7 +10,8 @@ export async function collectMergedPulls(
 ) {
 	return await paginate(defaults, async (options) => {
 		const response = await octokit.request("GET /search/issues", {
-			...options,
+			page: options.page,
+			per_page: options.per_page,
 			q: `repo:${defaults.owner}/${defaults.repo}+is:pr+is:merged`,
 		});
 
