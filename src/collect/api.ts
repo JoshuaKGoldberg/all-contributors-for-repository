@@ -1,7 +1,7 @@
 import { Octokit } from "octokit";
 import { octokitFromAuthSafe } from "octokit-from-auth";
 
-const perPage = 100;
+const perPage = 500;
 
 export interface RequestDefaults {
 	owner: string;
@@ -31,12 +31,12 @@ export async function paginate<T>(
 ) {
 	const items: T[] = [];
 
-	for (let i = 0; i < 10; i += 1) {
+	for (let i = 1; i < 2; i += 1) {
 		const response = await request({ page: i, per_page: perPage, ...defaults });
 
 		items.push(...response);
 
-		if (response.length < 100) {
+		if (response.length < perPage) {
 			break;
 		}
 	}
