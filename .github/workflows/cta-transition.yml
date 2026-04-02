@@ -20,7 +20,7 @@ jobs:
           commit_message: "Check in changes from re-running npx create-typescript-app"
           commit_user_email: "bot@create.bingo"
           commit_user_name: "The Friendly Bingo Bot"
-      - uses: mshick/add-pr-comment@f102bb3ebc97eedd4e2a98a9e71e462cc257fe80 # v3
+      - uses: mshick/add-pr-comment@64b8e914979889d746c99dea15a76e77ef64580a # v3
         with:
           issue: ${{ github.event.pull_request.number }}
           message: |
