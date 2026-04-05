@@ -36,6 +36,15 @@
       "contributions": [
         "bug"
       ]
+    },
+    {
+      "login": "adriandalessandro",
+      "name": "Adrian D'Alessandro",
+      "avatar_url": "https://avatars.githubusercontent.com/u/40875798?v=4",
+      "profile": "https://github.com/AdrianDAlessandro",
+      "contributions": [
+        "bug"
+      ]
     }
   ],
   "contributorsSortAlphabetically": true,
