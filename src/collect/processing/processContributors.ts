@@ -7,9 +7,12 @@ import { repoEventIsPullRequestReviewEvent } from "./repoEventIsPullRequestRevie
 export function processContributors(
 	issueEvents: IssueEvent[],
 	repoEvents: Pick<RepoEvent, "type">[],
-	options: Pick<AllContributorsForRepositoryOptions, "ignoredLogins">,
+	options: Partial<AllContributorsForRepositoryOptions>,
 ) {
-	const contributors = new ContributorsCollection(options.ignoredLogins);
+	const contributors = new ContributorsCollection({
+		ignoredLoginPatterns: options.ignoredLoginPatterns,
+		ignoredLogins: options.ignoredLogins,
+	});
 	const maintainers = new Set<string>();
 
 	for (const issueEvent of issueEvents) {

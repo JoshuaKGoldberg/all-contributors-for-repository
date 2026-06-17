@@ -5,33 +5,31 @@ import { fillInOptions } from "./options.js";
 const owner = "fake-owner";
 const repo = "fake-repo";
 
-describe("fillInOptions", () => {
+describe(fillInOptions, () => {
 	it("fills in defaults when raw options don't provide them", () => {
 		const actual = fillInOptions({ owner, repo });
 
 		expect(actual).toMatchInlineSnapshot(`
-			{
-			  "auth": undefined,
-			  "ignoredLogins": Set {
-			    "allcontributors",
-			    "allcontributors[bot]",
-			    "copilot",
-			    "copilot[bot]",
-			    "dependabot",
-			    "dependabot[bot]",
-			    "github-actions",
-			    "github-actions[bot]",
-			    "renovate",
-			    "renovate[bot]",
-			  },
-			  "labelAcceptingPrs": "status: accepting prs",
-			  "labelTypeBug": "type: bug",
-			  "labelTypeDocs": "type: documentation",
-			  "labelTypeIdeas": "type: feature",
-			  "labelTypeTool": "area: tooling",
-			  "owner": "fake-owner",
-			  "repo": "fake-repo",
-			}
+      {
+        "auth": undefined,
+        "ignoredLoginPatterns": [
+          "\\[bot\\]$",
+        ],
+        "ignoredLogins": [
+          "allcontributors",
+          "copilot",
+          "dependabot",
+          "github-actions",
+          "renovate",
+        ],
+        "labelAcceptingPrs": "status: accepting prs",
+        "labelTypeBug": "type: bug",
+        "labelTypeDocs": "type: documentation",
+        "labelTypeIdeas": "type: feature",
+        "labelTypeTool": "area: tooling",
+        "owner": "fake-owner",
+        "repo": "fake-repo",
+      }
 		`);
 	});
 
@@ -49,9 +47,12 @@ describe("fillInOptions", () => {
 		expect(actual).toMatchInlineSnapshot(`
 			{
 			  "auth": undefined,
-			  "ignoredLogins": Set {
+			  "ignoredLoginPatterns": [
+			    "\\[bot\\]$",
+			  ],
+			  "ignoredLogins": [
 			    "abc",
-			  },
+			  ],
 			  "labelAcceptingPrs": "fake-label-accepting-prs",
 			  "labelTypeBug": "fake-label-type-bug",
 			  "labelTypeDocs": "fake-label-type-docs",

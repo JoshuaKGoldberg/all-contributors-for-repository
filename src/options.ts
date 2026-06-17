@@ -1,15 +1,11 @@
 const defaultOptions = {
+	ignoredLoginPatterns: ["\\[bot\\]$"],
 	ignoredLogins: [
 		"allcontributors",
-		"allcontributors[bot]",
 		"copilot",
-		"copilot[bot]",
 		"dependabot",
-		"dependabot[bot]",
 		"github-actions",
-		"github-actions[bot]",
 		"renovate",
-		"renovate[bot]",
 	],
 	labelAcceptingPrs: "status: accepting prs",
 	labelTypeBug: "type: bug",
@@ -20,7 +16,8 @@ const defaultOptions = {
 
 export interface AllContributorsForRepositoryOptions {
 	auth?: string;
-	ignoredLogins: Set<string>;
+	ignoredLoginPatterns: string[];
+	ignoredLogins: string[];
 	labelAcceptingPrs: string;
 	labelTypeBug: string;
 	labelTypeDocs: string;
@@ -35,6 +32,11 @@ export interface RawAllContributorsForRepositoryOptions {
 	 * GitHub auth token to query the API with, if necessary for private repositories and/or to avoid rate limiting.
 	 */
 	auth?: string;
+
+	/**
+	 * Regular expression patterns for usernames to ignore commits from, such as bot users.
+	 */
+	ignoredLoginPatterns?: string[];
 
 	/**
 	 * Usernames to ignore commits from, such as bot and bot-like users.
@@ -82,9 +84,9 @@ export function fillInOptions(
 ): AllContributorsForRepositoryOptions {
 	return {
 		auth: rawOptions.auth,
-		ignoredLogins: new Set(
-			rawOptions.ignoredLogins ?? defaultOptions.ignoredLogins,
-		),
+		ignoredLoginPatterns:
+			rawOptions.ignoredLoginPatterns ?? defaultOptions.ignoredLoginPatterns,
+		ignoredLogins: rawOptions.ignoredLogins ?? defaultOptions.ignoredLogins,
 		labelAcceptingPrs:
 			rawOptions.labelAcceptingPrs ?? defaultOptions.labelAcceptingPrs,
 		labelTypeBug: rawOptions.labelTypeBug ?? defaultOptions.labelTypeBug,

@@ -13,13 +13,25 @@ export type ContributorsContributions = Record<
  */
 export type ContributorContributions = Record<string, number[]>;
 
+interface ContributorCollectionOptions {
+	ignoredLoginPatterns?: string[];
+	ignoredLogins?: string[];
+}
+
 export class ContributorsCollection {
 	#contributors: Record<string, Contributor> = {};
+	#ignoredLoginPatterns: RegExp[];
 	#ignoredLogins: Set<string>;
 
-	constructor(ignoredLogins: Set<string>) {
+	constructor({
+		ignoredLoginPatterns,
+		ignoredLogins,
+	}: ContributorCollectionOptions = {}) {
+		this.#ignoredLoginPatterns = (ignoredLoginPatterns ?? []).map(
+			(pattern) => new RegExp(pattern, "i"),
+		);
 		this.#ignoredLogins = new Set(
-			Array.from(ignoredLogins).map((login) => login.toLowerCase()),
+			(ignoredLogins ?? []).map((login) => login.toLowerCase()),
 		);
 	}
 
@@ -29,7 +41,10 @@ export class ContributorsCollection {
 		}
 
 		const loginNormalized = login.toLowerCase();
-		if (this.#ignoredLogins.has(loginNormalized)) {
+		if (
+			this.#ignoredLogins.has(loginNormalized) ||
+			this.#ignoredLoginPatterns.some((pattern) => pattern.test(login))
+		) {
 			return;
 		}
 
