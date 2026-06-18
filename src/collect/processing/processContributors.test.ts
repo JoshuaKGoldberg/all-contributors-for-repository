@@ -4,7 +4,7 @@ import { IssueEvent } from "../collecting/collectIssueEvents.js";
 import { RepoEvent } from "../collecting/collectRepoEvents.js";
 import { processContributors } from "./processContributors.js";
 
-const fakeOptions = { ignoredLogins: ["ignored-login"] };
+const fakeOptions = { ignoredLogins: [/^ignored-login$/i] };
 
 describe(processContributors, () => {
 	it("adds a contributor as a maintainer when they accept an issue", () => {

@@ -38,40 +38,8 @@ describe(ContributorsCollection, () => {
 		});
 	});
 
-	it("does not add a login contribution when its exact case is ignored", () => {
-		const contributors = new ContributorsCollection({
-			ignoredLogins: ["ignored"],
-		});
-
-		contributors.add("abc", 1, "bug");
-		contributors.add("ignored", 2, "code");
-
-		const actual = contributors.collect();
-
-		expect(actual).toEqual({
-			abc: { bug: [1] },
-		});
-	});
-
-	it("does not add a login contribution when a different case is ignored", () => {
-		const contributors = new ContributorsCollection({
-			ignoredLogins: ["Ignored"],
-		});
-
-		contributors.add("abc", 1, "bug");
-		contributors.add("ignored", 2, "code");
-
-		const actual = contributors.collect();
-
-		expect(actual).toEqual({
-			abc: { bug: [1] },
-		});
-	});
-
-	it("does not add a login contribution when a regex pattern matches", () => {
-		const contributors = new ContributorsCollection({
-			ignoredLoginPatterns: ["\\[bot\\]$"],
-		});
+	it("does not add a login contribution when the login matches an ignore regex", () => {
+		const contributors = new ContributorsCollection([/\[bot\]$/i]);
 
 		contributors.add("[bot]123", 1, "bug");
 		contributors.add("123[bot]", 2, "code");

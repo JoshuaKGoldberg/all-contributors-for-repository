@@ -12,15 +12,13 @@ describe(fillInOptions, () => {
 		expect(actual).toMatchInlineSnapshot(`
       {
         "auth": undefined,
-        "ignoredLoginPatterns": [
-          "\\[bot\\]$",
-        ],
         "ignoredLogins": [
-          "allcontributors",
-          "copilot",
-          "dependabot",
-          "github-actions",
-          "renovate",
+          /\\\\\\[bot\\\\\\]\\$/i,
+          /\\^allcontributors\\$/i,
+          /\\^copilot\\$/i,
+          /\\^dependabot\\$/i,
+          /\\^github-actions\\$/i,
+          /\\^renovate\\$/i,
         ],
         "labelAcceptingPrs": "status: accepting prs",
         "labelTypeBug": "type: bug",
@@ -35,7 +33,7 @@ describe(fillInOptions, () => {
 
 	it("uses provided options when raw options provide them", () => {
 		const actual = fillInOptions({
-			ignoredLogins: ["abc"],
+			ignoredLogins: [/abc/i],
 			labelAcceptingPrs: "fake-label-accepting-prs",
 			labelTypeBug: "fake-label-type-bug",
 			labelTypeDocs: "fake-label-type-docs",
@@ -47,11 +45,8 @@ describe(fillInOptions, () => {
 		expect(actual).toMatchInlineSnapshot(`
 			{
 			  "auth": undefined,
-			  "ignoredLoginPatterns": [
-			    "\\[bot\\]$",
-			  ],
 			  "ignoredLogins": [
-			    "abc",
+			    /abc/i,
 			  ],
 			  "labelAcceptingPrs": "fake-label-accepting-prs",
 			  "labelTypeBug": "fake-label-type-bug",

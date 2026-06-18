@@ -1,11 +1,11 @@
 const defaultOptions = {
-	ignoredLoginPatterns: ["\\[bot\\]$"],
 	ignoredLogins: [
-		"allcontributors",
-		"copilot",
-		"dependabot",
-		"github-actions",
-		"renovate",
+		/\[bot\]$/i,
+		/^allcontributors$/i,
+		/^copilot$/i,
+		/^dependabot$/i,
+		/^github-actions$/i,
+		/^renovate$/i,
 	],
 	labelAcceptingPrs: "status: accepting prs",
 	labelTypeBug: "type: bug",
@@ -16,8 +16,7 @@ const defaultOptions = {
 
 export interface AllContributorsForRepositoryOptions {
 	auth?: string;
-	ignoredLoginPatterns: string[];
-	ignoredLogins: string[];
+	ignoredLogins: RegExp[];
 	labelAcceptingPrs: string;
 	labelTypeBug: string;
 	labelTypeDocs: string;
@@ -34,14 +33,9 @@ export interface RawAllContributorsForRepositoryOptions {
 	auth?: string;
 
 	/**
-	 * Regular expression patterns for usernames to ignore commits from, such as bot users.
+	 * Regular expressions for usernames to ignore commits from, such as bot users.
 	 */
-	ignoredLoginPatterns?: string[];
-
-	/**
-	 * Usernames to ignore commits from, such as bot and bot-like users.
-	 */
-	ignoredLogins?: string[];
+	ignoredLogins?: RegExp[];
 
 	/**
 	 * Label to indicate an issue is accepting pull requests.
@@ -84,8 +78,6 @@ export function fillInOptions(
 ): AllContributorsForRepositoryOptions {
 	return {
 		auth: rawOptions.auth,
-		ignoredLoginPatterns:
-			rawOptions.ignoredLoginPatterns ?? defaultOptions.ignoredLoginPatterns,
 		ignoredLogins: rawOptions.ignoredLogins ?? defaultOptions.ignoredLogins,
 		labelAcceptingPrs:
 			rawOptions.labelAcceptingPrs ?? defaultOptions.labelAcceptingPrs,

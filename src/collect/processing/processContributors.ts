@@ -9,10 +9,7 @@ export function processContributors(
 	repoEvents: Pick<RepoEvent, "type">[],
 	options: Partial<AllContributorsForRepositoryOptions>,
 ) {
-	const contributors = new ContributorsCollection({
-		ignoredLoginPatterns: options.ignoredLoginPatterns,
-		ignoredLogins: options.ignoredLogins,
-	});
+	const contributors = new ContributorsCollection(options.ignoredLogins);
 	const maintainers = new Set<string>();
 
 	for (const issueEvent of issueEvents) {
