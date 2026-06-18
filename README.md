@@ -83,8 +83,8 @@ The exported `getAllContributorsForRepository` function takes in an object with 
 It additionally allows for the following optional options.
 
 - `auth` _(`string`)_: GitHub auth token to query the API with, if necessary for private repositories and/or to avoid rate limiting.
-- `ignoredLogins` _(`string[]`)_: Usernames to ignore commits from, such as bot and bot-like users.
-  - Default: `"allcontributors"`, `"allcontributors[bot]"`, `"copilot"`, `"copilot[bot]"`, `"dependabot"`, `"dependabot[bot]"`, `"renovate"`, `"renovate[bot]"`
+- `ignoredLogins` _(`RegExp[]`)_: Regular expressions for usernames to ignore commits from, such as bot users.
+  - Default: `[/\[bot\]$/i, /^allcontributors$/i, /^copilot$/i, /^dependabot$/i, /^renovate$/i]`
 - `labelAcceptingPrs` _(`string`)_: Label to indicate an issue is accepting pull requests.
 - `labelTypeBug` _(`string`)_: Label to indicate an issue is for a bug.
 - `labelTypeDocs` _(`string`)_: Label to indicate an issue is for documentation.
@@ -96,7 +96,7 @@ import { getAllContributorsForRepository } from "all-contributors-for-repository
 
 getAllContributorsForRepository({
 	auth: "abc123",
-	ignoredLogins: ["MyBotLikeUser"],
+	ignoredLogins: [/-it$/i],
 	labelAcceptingPrs: "help wanted",
 	labelTypeBug: "bug",
 	labelTypeDocs: "docs",

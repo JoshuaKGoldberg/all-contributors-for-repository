@@ -1,15 +1,11 @@
 const defaultOptions = {
 	ignoredLogins: [
-		"allcontributors",
-		"allcontributors[bot]",
-		"copilot",
-		"copilot[bot]",
-		"dependabot",
-		"dependabot[bot]",
-		"github-actions",
-		"github-actions[bot]",
-		"renovate",
-		"renovate[bot]",
+		/\[bot\]$/i,
+		/^allcontributors$/i,
+		/^copilot$/i,
+		/^dependabot$/i,
+		/^github-actions$/i,
+		/^renovate$/i,
 	],
 	labelAcceptingPrs: "status: accepting prs",
 	labelTypeBug: "type: bug",
@@ -20,7 +16,7 @@ const defaultOptions = {
 
 export interface AllContributorsForRepositoryOptions {
 	auth?: string;
-	ignoredLogins: Set<string>;
+	ignoredLogins: RegExp[];
 	labelAcceptingPrs: string;
 	labelTypeBug: string;
 	labelTypeDocs: string;
@@ -37,9 +33,9 @@ export interface RawAllContributorsForRepositoryOptions {
 	auth?: string;
 
 	/**
-	 * Usernames to ignore commits from, such as bot and bot-like users.
+	 * Regular expressions for usernames to ignore commits from, such as bot users.
 	 */
-	ignoredLogins?: string[];
+	ignoredLogins?: RegExp[];
 
 	/**
 	 * Label to indicate an issue is accepting pull requests.
@@ -82,9 +78,7 @@ export function fillInOptions(
 ): AllContributorsForRepositoryOptions {
 	return {
 		auth: rawOptions.auth,
-		ignoredLogins: new Set(
-			rawOptions.ignoredLogins ?? defaultOptions.ignoredLogins,
-		),
+		ignoredLogins: rawOptions.ignoredLogins ?? defaultOptions.ignoredLogins,
 		labelAcceptingPrs:
 			rawOptions.labelAcceptingPrs ?? defaultOptions.labelAcceptingPrs,
 		labelTypeBug: rawOptions.labelTypeBug ?? defaultOptions.labelTypeBug,
