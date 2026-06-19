@@ -1,3 +1,15 @@
+# Changelog
+
+## [0.5.0](https://github.com/JoshuaKGoldberg/all-contributors-for-repository/compare/0.4.0...0.5.0) (2026-06-19)
+
+### Features
+
+- add support for regular expressions for ignored logins ([#1199](https://github.com/JoshuaKGoldberg/all-contributors-for-repository/issues/1199)) ([1b54bba](https://github.com/JoshuaKGoldberg/all-contributors-for-repository/commit/1b54bbaa821dc59d72966eedcde907a8c5190fba)), closes [#1156](https://github.com/JoshuaKGoldberg/all-contributors-for-repository/issues/1156)
+
+### Bug Fixes
+
+- do not pass the owner and repo values to GET /search/issues ([#1097](https://github.com/JoshuaKGoldberg/all-contributors-for-repository/issues/1097)) ([486c046](https://github.com/JoshuaKGoldberg/all-contributors-for-repository/commit/486c04664626b3eb8c144241095a6b937117cd45)), closes [#1120](https://github.com/JoshuaKGoldberg/all-contributors-for-repository/issues/1120) [#1096](https://github.com/JoshuaKGoldberg/all-contributors-for-repository/issues/1096)
+
 # [0.4.0](https://github.com/JoshuaKGoldberg/all-contributors-for-repository/compare/0.3.1...0.4.0) (2024-12-16)
 
 ### Features
@@ -44,5 +56,3 @@
 ### Bug Fixes
 
 - use commit-to-co-authors and co-author-to-username ([#160](https://github.com/JoshuaKGoldberg/all-contributors-for-repository/issues/160)) ([0fda2d9](https://github.com/JoshuaKGoldberg/all-contributors-for-repository/commit/0fda2d9e1bcda34345b30b4d6991cecbe6f9cdd5)), closes [#33](https://github.com/JoshuaKGoldberg/all-contributors-for-repository/issues/33)
-
-# Changelog
