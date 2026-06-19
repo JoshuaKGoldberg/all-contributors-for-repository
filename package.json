@@ -44,7 +44,7 @@
 	"devDependencies": {
 		"@eslint-community/eslint-plugin-eslint-comments": "4.7.0",
 		"@eslint/js": "10.0.1",
-		"@eslint/markdown": "7.5.1",
+		"@eslint/markdown": "8.0.2",
 		"@release-it/conventional-changelog": "11.0.0",
 		"@types/conventional-commits-parser": "5.0.1",
 		"@types/node": "24.13.0",
