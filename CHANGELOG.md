@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.5.1](https://github.com/JoshuaKGoldberg/all-contributors-for-repository/compare/0.5.0...0.5.1) (2026-06-30)
+
+### Bug Fixes
+
+- **deps:** update dependency conventional-commits-parser to v7 ([#1225](https://github.com/JoshuaKGoldberg/all-contributors-for-repository/issues/1225)) ([ed3e8af](https://github.com/JoshuaKGoldberg/all-contributors-for-repository/commit/ed3e8afe288fda765957912eddda83acecaebc77))
+
 ## [0.5.0](https://github.com/JoshuaKGoldberg/all-contributors-for-repository/compare/0.4.0...0.5.0) (2026-06-19)
 
 ### Features
