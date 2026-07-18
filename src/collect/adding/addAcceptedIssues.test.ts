@@ -76,6 +76,17 @@ describe("addAcceptedIssues", () => {
 		expect(add).toHaveBeenCalledExactlyOnceWith(login, issue.number, "tool");
 	});
 
+	it("adds an issue when it has a label object with a matching name", () => {
+		const add = vi.fn();
+		const issue = createStubIssue({
+			labels: [{ name: options.labelTypeBug }],
+		});
+
+		addAcceptedIssues([issue], { add }, options);
+
+		expect(add).toHaveBeenCalledExactlyOnceWith(login, issue.number, "bug");
+	});
+
 	it("adds an issue's co-author when the body includes them", () => {
 		const add = vi.fn();
 		const issue = createStubIssue({
