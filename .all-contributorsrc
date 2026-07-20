@@ -39,6 +39,15 @@
       ]
     },
     {
+      "login": "azinez",
+      "name": "Phi Nguyen",
+      "avatar_url": "https://avatars.githubusercontent.com/u/64292779?v=4",
+      "profile": "http://phinguyen.netlify.app",
+      "contributions": [
+        "test"
+      ]
+    },
+    {
       "login": "adriandalessandro",
       "name": "Adrian D'Alessandro",
       "avatar_url": "https://avatars.githubusercontent.com/u/40875798?v=4",
@@ -65,7 +74,7 @@
       "contributions": [
         "bug"
       ]
-    },
+    }
   ],
   "contributorsPerLine": 7,
   "contributorsSortAlphabetically": true,
