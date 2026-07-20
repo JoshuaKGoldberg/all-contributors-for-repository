@@ -15,12 +15,10 @@ export type ContributorContributions = Record<string, number[]>;
 
 export class ContributorsCollection {
 	#contributors: Record<string, Contributor> = {};
-	#ignoredLogins: Set<string>;
+	#ignoredLogins: RegExp[];
 
-	constructor(ignoredLogins: Set<string>) {
-		this.#ignoredLogins = new Set(
-			Array.from(ignoredLogins).map((login) => login.toLowerCase()),
-		);
+	constructor(ignoredLogins?: RegExp[]) {
+		this.#ignoredLogins = ignoredLogins ?? [];
 	}
 
 	add(login: string | undefined, number: number, type: string) {
@@ -29,7 +27,7 @@ export class ContributorsCollection {
 		}
 
 		const loginNormalized = login.toLowerCase();
-		if (this.#ignoredLogins.has(loginNormalized)) {
+		if (this.#ignoredLogins.some((pattern) => pattern.test(login))) {
 			return;
 		}
 
