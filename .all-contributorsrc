@@ -46,7 +46,16 @@
       "contributions": [
         "bug"
       ]
-    }
+    },
+    {
+      "login": "lishaduck",
+      "name": "Eli",
+      "avatar_url": "https://avatars.githubusercontent.com/u/88557639?v=4",
+      "profile": "http://lishaduck.github.io",
+      "contributions": [
+        "bug"
+      ]
+    },
   ],
   "contributorsPerLine": 7,
   "contributorsSortAlphabetically": true,
