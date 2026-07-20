@@ -46,6 +46,34 @@
       "contributions": [
         "test"
       ]
+    },
+    {
+      "login": "adriandalessandro",
+      "name": "Adrian D'Alessandro",
+      "avatar_url": "https://avatars.githubusercontent.com/u/40875798?v=4",
+      "profile": "https://github.com/AdrianDAlessandro",
+      "contributions": [
+        "bug"
+      ]
+    },
+    {
+      "login": "michaelfaith",
+      "name": "michael faith",
+      "avatar_url": "https://avatars.githubusercontent.com/u/8071845?v=4",
+      "profile": "https://github.com/michaelfaith",
+      "contributions": [
+        "bug",
+        "maintenance"
+      ]
+    },
+    {
+      "login": "lishaduck",
+      "name": "Eli",
+      "avatar_url": "https://avatars.githubusercontent.com/u/88557639?v=4",
+      "profile": "http://lishaduck.github.io",
+      "contributions": [
+        "bug"
+      ]
     }
   ],
   "contributorsPerLine": 7,
