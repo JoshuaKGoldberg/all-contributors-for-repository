@@ -1,20 +1,20 @@
-import { Octokit } from "octokit";
-
-import { paginate, RequestDefaults } from "../api.js";
+import {
+	paginate,
+	PaginatingOctokit,
+	perPage,
+	RequestDefaults,
+} from "../api.js";
 
 export type MergedPull = Awaited<ReturnType<typeof collectMergedPulls>>[number];
 
 export async function collectMergedPulls(
 	defaults: RequestDefaults,
-	octokit: Octokit,
+	octokit: PaginatingOctokit,
 ) {
-	return await paginate(defaults, async (options) => {
-		const response = await octokit.request("GET /search/issues", {
-			page: options.page,
-			per_page: options.per_page,
+	return await paginate(
+		octokit.paginate.iterator("GET /search/issues", {
+			per_page: perPage,
 			q: `repo:${defaults.owner}/${defaults.repo}+is:pr+is:merged`,
-		});
-
-		return response.data.items;
-	});
+		}),
+	);
 }
