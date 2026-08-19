@@ -68,7 +68,6 @@ vi.mock("octokit-from-auth", () => ({
 				async *iterator(url: string) {
 					const response = mockRequest(url);
 
-					// Octokit's pagination plugin unwraps search responses' items.
 					yield await Promise.resolve({
 						data:
 							response && "items" in response.data
