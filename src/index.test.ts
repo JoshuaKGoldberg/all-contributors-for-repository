@@ -64,6 +64,20 @@ const mockRequest = (url: string) => {
 vi.mock("octokit-from-auth", () => ({
 	octokitFromAuthSafe() {
 		class MockOctokit {
+			paginate = {
+				async *iterator(url: string) {
+					const response = mockRequest(url);
+
+					// Octokit's pagination plugin unwraps search responses' items.
+					yield await Promise.resolve({
+						data:
+							response && "items" in response.data
+								? response.data.items
+								: response?.data,
+					});
+				},
+			};
+
 			request = mockRequest;
 
 			static defaults = () => MockOctokit;
