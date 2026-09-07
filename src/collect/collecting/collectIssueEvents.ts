@@ -1,6 +1,9 @@
-import { Octokit } from "octokit";
-
-import { paginate, RequestDefaults } from "../api.js";
+import {
+	paginate,
+	PaginatingOctokit,
+	perPage,
+	RequestDefaults,
+} from "../api.js";
 
 const relevantIssueEvents = new Set([
 	"assigned",
@@ -14,18 +17,14 @@ export type IssueEvent = Awaited<ReturnType<typeof collectIssueEvents>>[number];
 
 export async function collectIssueEvents(
 	defaults: RequestDefaults,
-	octokit: Octokit,
+	octokit: PaginatingOctokit,
 ) {
-	const issueEvents = await paginate(defaults, async (options) => {
-		const response = await octokit.request(
-			"GET /repos/{owner}/{repo}/issues/events",
-			{
-				...options,
-				state: "all",
-			},
-		);
-		return response.data;
-	});
+	const issueEvents = await paginate(
+		octokit.paginate.iterator("GET /repos/{owner}/{repo}/issues/events", {
+			...defaults,
+			per_page: perPage,
+		}),
+	);
 
 	return issueEvents.filter((issueEvent) =>
 		relevantIssueEvents.has(issueEvent.event),

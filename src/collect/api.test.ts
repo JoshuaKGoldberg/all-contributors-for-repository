@@ -1,59 +1,41 @@
 import { describe, expect, it } from "vitest";
 
-import { paginate, RequestOptionsWithPage } from "./api.js";
+import { paginate } from "./api.js";
 
-const defaults = {
-	owner: "",
-	repo: "",
-};
+async function* createPages(pages: number[][]) {
+	for (const data of pages) {
+		yield await Promise.resolve({ data });
+	}
+}
 
 describe("paginate", () => {
-	it("returns an empty array when request returns an empty array", async () => {
-		const request = () => Promise.resolve([]);
-
-		const actual = await paginate(defaults, request);
+	it("returns an empty array when the iterable yields no pages", async () => {
+		const actual = await paginate(createPages([]));
 
 		expect(actual).toEqual([]);
 	});
 
-	it("returns the first request's items when request returns an array the first time", async () => {
-		const request = ({ page }: RequestOptionsWithPage) =>
-			Promise.resolve(page ? [] : [{ page }]);
+	it("returns all items when the iterable ends before the page limit", async () => {
+		const actual = await paginate(createPages([[1, 2], [3]]));
 
-		const actual = await paginate(defaults, request);
-
-		expect(actual).toEqual([{ page: 0 }]);
+		expect(actual).toEqual([1, 2, 3]);
 	});
 
-	it("returns multiple request items when request returns multiple times", async () => {
-		const request = ({ page }: RequestOptionsWithPage) =>
-			Promise.resolve(page < 2 ? Array(100).fill({ page }) : []);
+	it("stops requesting pages when the page limit is reached", async () => {
+		const requested: number[] = [];
 
-		const actual = await paginate(defaults, request);
+		async function* createMorePagesThanTheLimit() {
+			for (let page = 1; page <= 12; page += 1) {
+				requested.push(page);
+				yield await Promise.resolve({ data: [page] });
+			}
+		}
 
-		expect(actual).toEqual([
-			...Array(100).fill({ page: 0 }),
-			...Array(100).fill({ page: 1 }),
-		]);
-	});
+		const actual = await paginate(createMorePagesThanTheLimit());
 
-	it("stops retrieving after 10 requests", async () => {
-		const request = ({ page }: RequestOptionsWithPage) =>
-			Promise.resolve(Array(100).fill({ page }));
-
-		const actual = await paginate(defaults, request);
-
-		expect(actual).toEqual([
-			...Array(100).fill({ page: 0 }),
-			...Array(100).fill({ page: 1 }),
-			...Array(100).fill({ page: 2 }),
-			...Array(100).fill({ page: 3 }),
-			...Array(100).fill({ page: 4 }),
-			...Array(100).fill({ page: 5 }),
-			...Array(100).fill({ page: 6 }),
-			...Array(100).fill({ page: 7 }),
-			...Array(100).fill({ page: 8 }),
-			...Array(100).fill({ page: 9 }),
-		]);
+		expect({ actual, requested }).toEqual({
+			actual: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+			requested: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+		});
 	});
 });
