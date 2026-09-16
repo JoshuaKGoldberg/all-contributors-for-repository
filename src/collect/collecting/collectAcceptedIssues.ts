@@ -1,6 +1,9 @@
-import { Octokit } from "octokit";
-
-import { paginate, RequestDefaults } from "../api.js";
+import {
+	paginate,
+	PaginatingOctokit,
+	perPage,
+	RequestDefaults,
+} from "../api.js";
 
 export type AcceptedIssue = Awaited<
 	ReturnType<typeof collectAcceptedIssues>
@@ -8,17 +11,17 @@ export type AcceptedIssue = Awaited<
 
 export async function collectAcceptedIssues(
 	defaults: RequestDefaults,
-	octokit: Octokit,
+	octokit: PaginatingOctokit,
 	labelAcceptingPrs: string,
 ) {
-	const issues = await paginate(defaults, async (requestOptions) => {
-		const response = await octokit.request("GET /repos/{owner}/{repo}/issues", {
-			...requestOptions,
+	const issues = await paginate(
+		octokit.paginate.iterator("GET /repos/{owner}/{repo}/issues", {
+			...defaults,
 			labels: labelAcceptingPrs,
+			per_page: perPage,
 			state: "all",
-		});
-		return response.data;
-	});
+		}),
+	);
 
 	return issues;
 }
