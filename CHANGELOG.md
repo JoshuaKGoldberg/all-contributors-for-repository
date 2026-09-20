@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.5.2](https://github.com/JoshuaKGoldberg/all-contributors-for-repository/compare/0.5.1...0.5.2) (2026-09-20)
+
+### Bug Fixes
+
+- stop paginating past each endpoint's cap ([#1292](https://github.com/JoshuaKGoldberg/all-contributors-for-repository/issues/1292)) ([c7b5207](https://github.com/JoshuaKGoldberg/all-contributors-for-repository/commit/c7b52071e5af6b95ee7ed790051361c01fba6b42)), closes [#770](https://github.com/JoshuaKGoldberg/all-contributors-for-repository/issues/770)
+
 ## [0.5.1](https://github.com/JoshuaKGoldberg/all-contributors-for-repository/compare/0.5.0...0.5.1) (2026-06-30)
 
 ### Bug Fixes
