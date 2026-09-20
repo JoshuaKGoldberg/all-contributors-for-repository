@@ -12,6 +12,7 @@ const defaultOptions = {
 	labelTypeDocs: "type: documentation",
 	labelTypeIdeas: "type: feature",
 	labelTypeTool: "area: tooling",
+	testFiles: [/\.(spec|test)\.[^/]+$/i, /(^|\/)(__tests__|tests?)\//i],
 };
 
 export interface AllContributorsForRepositoryOptions {
@@ -24,6 +25,7 @@ export interface AllContributorsForRepositoryOptions {
 	labelTypeTool: string;
 	owner: string;
 	repo: string;
+	testFiles: RegExp[];
 }
 
 export interface RawAllContributorsForRepositoryOptions {
@@ -71,6 +73,11 @@ export interface RawAllContributorsForRepositoryOptions {
 	 *  The name of the repository to query, such as `"all-contributors-for-repository"`.
 	 */
 	repo: string;
+
+	/**
+	 * Regular expressions for file paths that count as tests, for merged PRs to be given a `test` contribution.
+	 */
+	testFiles?: RegExp[];
 }
 
 export function fillInOptions(
@@ -87,5 +94,6 @@ export function fillInOptions(
 		labelTypeTool: rawOptions.labelTypeTool ?? defaultOptions.labelTypeTool,
 		owner: rawOptions.owner,
 		repo: rawOptions.repo,
+		testFiles: rawOptions.testFiles ?? defaultOptions.testFiles,
 	};
 }
