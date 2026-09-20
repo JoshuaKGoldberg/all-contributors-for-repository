@@ -13,13 +13,10 @@ export function processContributors(
 	const maintainers = new Set<string>();
 
 	for (const issueEvent of issueEvents) {
-		if (issueEvent.actor && issueEvent.issue) {
-			contributors.add(
-				issueEvent.actor.login,
-				issueEvent.issue.number,
-				"maintenance",
-			);
-			maintainers.add(issueEvent.actor.login);
+		const login = getMaintainerLogin(issueEvent);
+		if (login && issueEvent.issue) {
+			contributors.add(login, issueEvent.issue.number, "maintenance");
+			maintainers.add(login);
 		}
 	}
 
@@ -33,4 +30,15 @@ export function processContributors(
 	}
 
 	return contributors;
+}
+
+/**
+ * The GitHub API reports the assignee, not the assigner, as the actor of an
+ * "assigned" issue event. Being assigned an issue doesn't require any repo
+ * permissions, so the maintenance credit belongs to whoever did the assigning.
+ */
+function getMaintainerLogin(issueEvent: IssueEvent) {
+	return issueEvent.event === "assigned"
+		? issueEvent.assigner?.login
+		: issueEvent.actor?.login;
 }

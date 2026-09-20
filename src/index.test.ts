@@ -35,6 +35,12 @@ const mockRequest = (url: string) => {
 				data: [
 					{
 						actor: {
+							login: "Assigned-User",
+						},
+						assignee: {
+							login: "Assigned-User",
+						},
+						assigner: {
 							login: "Issue-Event-User",
 						},
 						event: "assigned",
