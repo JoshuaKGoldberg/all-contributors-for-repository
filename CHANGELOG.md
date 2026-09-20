@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.6.0](https://github.com/JoshuaKGoldberg/all-contributors-for-repository/compare/0.5.2...0.6.0) (2026-09-20)
+
+### Features
+
+- recognize test contributions from PRs that touch test files ([#1328](https://github.com/JoshuaKGoldberg/all-contributors-for-repository/issues/1328)) ([309623a](https://github.com/JoshuaKGoldberg/all-contributors-for-repository/commit/309623a072c9f13368ba010bfac70c305f4cd107)), closes [#298](https://github.com/JoshuaKGoldberg/all-contributors-for-repository/issues/298)
+
 ## [0.5.2](https://github.com/JoshuaKGoldberg/all-contributors-for-repository/compare/0.5.1...0.5.2) (2026-09-20)
 
 ### Bug Fixes
