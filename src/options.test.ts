@@ -10,24 +10,28 @@ describe(fillInOptions, () => {
 		const actual = fillInOptions({ owner, repo });
 
 		expect(actual).toMatchInlineSnapshot(`
-      {
-        "auth": undefined,
-        "ignoredLogins": [
-          /\\\\\\[bot\\\\\\]\\$/i,
-          /\\^allcontributors\\$/i,
-          /\\^copilot\\$/i,
-          /\\^dependabot\\$/i,
-          /\\^github-actions\\$/i,
-          /\\^renovate\\$/i,
-        ],
-        "labelAcceptingPrs": "status: accepting prs",
-        "labelTypeBug": "type: bug",
-        "labelTypeDocs": "type: documentation",
-        "labelTypeIdeas": "type: feature",
-        "labelTypeTool": "area: tooling",
-        "owner": "fake-owner",
-        "repo": "fake-repo",
-      }
+			{
+			  "auth": undefined,
+			  "ignoredLogins": [
+			    /\\\\\\[bot\\\\\\]\\$/i,
+			    /\\^allcontributors\\$/i,
+			    /\\^copilot\\$/i,
+			    /\\^dependabot\\$/i,
+			    /\\^github-actions\\$/i,
+			    /\\^renovate\\$/i,
+			  ],
+			  "labelAcceptingPrs": "status: accepting prs",
+			  "labelTypeBug": "type: bug",
+			  "labelTypeDocs": "type: documentation",
+			  "labelTypeIdeas": "type: feature",
+			  "labelTypeTool": "area: tooling",
+			  "owner": "fake-owner",
+			  "repo": "fake-repo",
+			  "testFiles": [
+			    /\\\\\\.\\(spec\\|test\\)\\\\\\.\\[\\^/\\]\\+\\$/i,
+			    /\\(\\^\\|\\\\/\\)\\(__tests__\\|tests\\?\\)\\\\//i,
+			  ],
+			}
 		`);
 	});
 
@@ -40,6 +44,7 @@ describe(fillInOptions, () => {
 			labelTypeTool: "fake-label-type-tool",
 			owner,
 			repo,
+			testFiles: [/def/i],
 		});
 
 		expect(actual).toMatchInlineSnapshot(`
@@ -55,6 +60,9 @@ describe(fillInOptions, () => {
 			  "labelTypeTool": "fake-label-type-tool",
 			  "owner": "fake-owner",
 			  "repo": "fake-repo",
+			  "testFiles": [
+			    /def/i,
+			  ],
 			}
 		`);
 	});

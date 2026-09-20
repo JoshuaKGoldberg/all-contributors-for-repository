@@ -29,7 +29,7 @@ export async function collect(
 
 	// 3. Add additional contributors based on issues and pulls
 	addAcceptedIssues(Object.values(acceptedIssues), contributors, options);
-	await addMergedPulls(mergedPulls, contributors, octokit);
+	await addMergedPulls(mergedPulls, contributors, octokit, options);
 
 	// 4. Collect the contributions under each contributor
 	return contributors.collect();
