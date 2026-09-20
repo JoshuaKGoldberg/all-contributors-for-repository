@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.6.1](https://github.com/JoshuaKGoldberg/all-contributors-for-repository/compare/0.6.0...0.6.1) (2026-09-20)
+
+### Bug Fixes
+
+- credit the assigner, not the assignee, for assigned issue events ([#1330](https://github.com/JoshuaKGoldberg/all-contributors-for-repository/issues/1330)) ([325e38f](https://github.com/JoshuaKGoldberg/all-contributors-for-repository/commit/325e38f7807bd15fc561c60ddfa7667279b636e6)), closes [#1329](https://github.com/JoshuaKGoldberg/all-contributors-for-repository/issues/1329), references [JoshuaKGoldberg/all-contributors-auto-action#938](https://github.com/JoshuaKGoldberg/all-contributors-auto-action/issues/938)
+
 ## [0.6.0](https://github.com/JoshuaKGoldberg/all-contributors-for-repository/compare/0.5.2...0.6.0) (2026-09-20)
 
 ### Features
