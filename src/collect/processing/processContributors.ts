@@ -13,13 +13,10 @@ export function processContributors(
 	const maintainers = new Set<string>();
 
 	for (const issueEvent of issueEvents) {
-		if (issueEvent.actor && issueEvent.issue) {
-			contributors.add(
-				issueEvent.actor.login,
-				issueEvent.issue.number,
-				"maintenance",
-			);
-			maintainers.add(issueEvent.actor.login);
+		const login = getMaintainerLogin(issueEvent);
+		if (login && issueEvent.issue) {
+			contributors.add(login, issueEvent.issue.number, "maintenance");
+			maintainers.add(login);
 		}
 	}
 
@@ -33,4 +30,10 @@ export function processContributors(
 	}
 
 	return contributors;
+}
+
+function getMaintainerLogin(issueEvent: IssueEvent) {
+	return issueEvent.event === "assigned"
+		? issueEvent.assigner?.login
+		: issueEvent.actor?.login;
 }

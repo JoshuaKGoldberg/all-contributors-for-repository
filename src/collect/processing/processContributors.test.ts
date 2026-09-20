@@ -22,6 +22,49 @@ describe(processContributors, () => {
 		});
 	});
 
+	it("adds the assigner, not the assignee, as a maintainer when an issue is assigned", () => {
+		const issueId = 1;
+		const assignee = "assignee-login";
+		const assigner = "assigner-login";
+
+		const contributors = processContributors(
+			[
+				{
+					actor: { login: assignee },
+					assignee: { login: assignee },
+					assigner: { login: assigner },
+					event: "assigned",
+					issue: { number: issueId },
+				} as IssueEvent,
+			],
+			[],
+			fakeOptions,
+		);
+
+		expect(contributors.collect()).toEqual({
+			[assigner]: { maintenance: [issueId] },
+		});
+	});
+
+	it("does not add a maintainer when an assigned event has no assigner", () => {
+		const issueId = 1;
+		const login = "abc123";
+
+		const contributors = processContributors(
+			[
+				{
+					actor: { login },
+					event: "assigned",
+					issue: { number: issueId },
+				} as IssueEvent,
+			],
+			[],
+			fakeOptions,
+		);
+
+		expect(contributors.collect()).toEqual({});
+	});
+
 	it("adds a contributor as a reviewer when they review a PR", () => {
 		const issueId = 1;
 		const login = "abc123";
