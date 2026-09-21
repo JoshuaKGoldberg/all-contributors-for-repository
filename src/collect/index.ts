@@ -18,10 +18,15 @@ export async function collect(
 	// 1. Collect event data from the GitHub API
 	const [acceptedIssues, issueEvents, mergedPulls, repoEvents] =
 		await Promise.all([
-			collectAcceptedIssues(defaults, octokit, options.labelAcceptingPrs),
-			collectIssueEvents(defaults, octokit),
-			collectMergedPulls(defaults, octokit),
-			collectRepoEvents(defaults, octokit),
+			collectAcceptedIssues(
+				defaults,
+				octokit,
+				options.labelAcceptingPrs,
+				options.since,
+			),
+			collectIssueEvents(defaults, octokit, options.since),
+			collectMergedPulls(defaults, octokit, options.since),
+			collectRepoEvents(defaults, octokit, options.since),
 		]);
 
 	// 2. Process individual contributors from those events

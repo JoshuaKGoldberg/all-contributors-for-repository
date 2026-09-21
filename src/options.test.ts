@@ -27,6 +27,7 @@ describe(fillInOptions, () => {
 			  "labelTypeTool": "area: tooling",
 			  "owner": "fake-owner",
 			  "repo": "fake-repo",
+			  "since": undefined,
 			  "testFiles": [
 			    /\\\\\\.\\(spec\\|test\\)\\\\\\.\\[\\^/\\]\\+\\$/i,
 			    /\\(\\^\\|\\\\/\\)\\(__tests__\\|tests\\?\\)\\\\//i,
@@ -60,6 +61,7 @@ describe(fillInOptions, () => {
 			  "labelTypeTool": "fake-label-type-tool",
 			  "owner": "fake-owner",
 			  "repo": "fake-repo",
+			  "since": undefined,
 			  "testFiles": [
 			    /def/i,
 			  ],

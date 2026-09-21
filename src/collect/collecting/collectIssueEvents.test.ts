@@ -57,4 +57,19 @@ describe("collectIssueEvents", () => {
 
 		expect(actual).toEqual([issue]);
 	});
+
+	it("excludes events from before since when since is provided", async () => {
+		const recent = { created_at: "2026-01-03T00:00:00Z", event: "assigned" };
+		const old = { created_at: "2026-01-01T00:00:00Z", event: "assigned" };
+
+		mockIterator.mockReturnValue(createPage([recent, old]));
+
+		const actual = await collectIssueEvents(
+			defaults,
+			mockOctokit,
+			new Date("2026-01-02"),
+		);
+
+		expect(actual).toEqual([recent]);
+	});
 });

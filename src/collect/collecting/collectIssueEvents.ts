@@ -18,12 +18,14 @@ export type IssueEvent = Awaited<ReturnType<typeof collectIssueEvents>>[number];
 export async function collectIssueEvents(
 	defaults: RequestDefaults,
 	octokit: PaginatingOctokit,
+	since?: Date,
 ) {
 	const issueEvents = await paginate(
 		octokit.paginate.iterator("GET /repos/{owner}/{repo}/issues/events", {
 			...defaults,
 			per_page: perPage,
 		}),
+		{ since, timestampOf: (issueEvent) => issueEvent.created_at },
 	);
 
 	return issueEvents.filter((issueEvent) =>
