@@ -2,7 +2,7 @@ import { describe, expect, it } from "vitest";
 
 import { paginate } from "./api.js";
 
-async function* createPages(pages: number[][]) {
+async function* createPages<T>(pages: T[][]) {
 	for (const data of pages) {
 		yield await Promise.resolve({ data });
 	}
@@ -37,5 +37,49 @@ describe("paginate", () => {
 			actual: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
 			requested: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
 		});
+	});
+
+	it("returns all items when since is provided but no timestampOf is", async () => {
+		const actual = await paginate(createPages([[1, 2], [3]]), {
+			since: new Date("2026-01-02"),
+		});
+
+		expect(actual).toEqual([1, 2, 3]);
+	});
+
+	it("excludes items from before since and stops requesting pages once one is seen", async () => {
+		const requested: number[] = [];
+
+		async function* createDatedPages() {
+			const pages = [
+				["2026-01-04", "2026-01-03"],
+				["2026-01-02", "2026-01-01"],
+				["2025-12-31"],
+			];
+
+			for (const [index, data] of pages.entries()) {
+				requested.push(index + 1);
+				yield await Promise.resolve({ data });
+			}
+		}
+
+		const actual = await paginate(createDatedPages(), {
+			since: new Date("2026-01-02"),
+			timestampOf: (item) => item,
+		});
+
+		expect({ actual, requested }).toEqual({
+			actual: ["2026-01-04", "2026-01-03", "2026-01-02"],
+			requested: [1, 2],
+		});
+	});
+
+	it("keeps items without a timestamp when since is provided", async () => {
+		const actual = await paginate(createPages([[null, "2026-01-01"]]), {
+			since: new Date("2026-01-02"),
+			timestampOf: (item) => item,
+		});
+
+		expect(actual).toEqual([null]);
 	});
 });

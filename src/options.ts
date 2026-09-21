@@ -25,6 +25,7 @@ export interface AllContributorsForRepositoryOptions {
 	labelTypeTool: string;
 	owner: string;
 	repo: string;
+	since?: Date;
 	testFiles: RegExp[];
 }
 
@@ -75,6 +76,12 @@ export interface RawAllContributorsForRepositoryOptions {
 	repo: string;
 
 	/**
+	 * Only include contributions made at or after this time.
+	 * Useful for repeated runs, to avoid re-requesting contributions that were already seen.
+	 */
+	since?: Date;
+
+	/**
 	 * Regular expressions for file paths that count as tests, for merged PRs to be given a `test` contribution.
 	 */
 	testFiles?: RegExp[];
@@ -94,6 +101,7 @@ export function fillInOptions(
 		labelTypeTool: rawOptions.labelTypeTool ?? defaultOptions.labelTypeTool,
 		owner: rawOptions.owner,
 		repo: rawOptions.repo,
+		since: rawOptions.since,
 		testFiles: rawOptions.testFiles ?? defaultOptions.testFiles,
 	};
 }

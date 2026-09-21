@@ -92,6 +92,9 @@ It additionally allows for the following optional options.
 - `labelTypeDocs` _(`string`)_: Label to indicate an issue is for documentation.
 - `labelTypeIdeas` _(`string`)_: Label to indicate an issue is for a feature.
 - `labelTypeTool` _(`string`)_: Label to indicate an issue is for tooling.
+- `since` _(`Date`)_: Only include contributions made at or after this time.
+  - Default: no limit; all available contributions are included.
+  - Useful for repeated runs, to avoid re-requesting contributions that were already seen.
 - `testFiles` _(`RegExp[]`)_: Regular expressions for file paths that count as tests, for merged PRs to be given a `test` contribution.
   - Default: `[/\.(spec|test)\.[^/]+$/i, /(^|\/)(__tests__|tests?)\//i]`
   - Pass `[]` to skip looking at PR files altogether.
@@ -107,6 +110,7 @@ getAllContributorsForRepository({
 	labelTypeDocs: "docs",
 	labelTypeIdeas: "feature",
 	labelTypeTool: "tool",
+	since: new Date("2026-01-01"),
 	testFiles: [/^tests\//],
 });
 ```
