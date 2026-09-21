@@ -12,7 +12,6 @@ const defaultOptions = {
 	labelTypeDocs: "type: documentation",
 	labelTypeIdeas: "type: feature",
 	labelTypeTool: "area: tooling",
-	testFiles: [/\.(spec|test)\.[^/]+$/i, /(^|\/)(__tests__|tests?)\//i],
 };
 
 export interface AllContributorsForRepositoryOptions {
@@ -26,7 +25,6 @@ export interface AllContributorsForRepositoryOptions {
 	owner: string;
 	repo: string;
 	since?: Date;
-	testFiles: RegExp[];
 }
 
 export interface RawAllContributorsForRepositoryOptions {
@@ -80,11 +78,6 @@ export interface RawAllContributorsForRepositoryOptions {
 	 * Useful for repeated runs, to avoid re-requesting contributions that were already seen.
 	 */
 	since?: Date;
-
-	/**
-	 * Regular expressions for file paths that count as tests, for merged PRs to be given a `test` contribution.
-	 */
-	testFiles?: RegExp[];
 }
 
 export function fillInOptions(
@@ -102,6 +95,5 @@ export function fillInOptions(
 		owner: rawOptions.owner,
 		repo: rawOptions.repo,
 		since: rawOptions.since,
-		testFiles: rawOptions.testFiles ?? defaultOptions.testFiles,
 	};
 }

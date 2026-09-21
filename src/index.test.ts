@@ -50,14 +50,6 @@ const mockRequest = (url: string) => {
 					},
 				],
 			};
-		case "GET /repos/{owner}/{repo}/pulls/{pull_number}/files":
-			return {
-				data: [
-					{
-						filename: "src/index.test.ts",
-					},
-				],
-			};
 		case "GET /search/issues":
 			return {
 				data: {
@@ -121,9 +113,6 @@ describe("end-to-end", () => {
 			  },
 			  "merged-pull-user": {
 			    "code": [
-			      333,
-			    ],
-			    "test": [
 			      333,
 			    ],
 			  },
