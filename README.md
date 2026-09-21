@@ -51,7 +51,6 @@ The types of contributions detected from the GitHub API are:
 - 📖 `doc`: authors of merged PRs that address issues labeled as accepting PRs and docs _(see [Options](#options))_
 - 🚧 `maintenance`: adding labels to issues and PRs, and merging PRs
 - 👀 `review`: submitting a review for a PR
-- ⚠️ `test`: authors of merged PRs that touch test files _(see [Options](#options))_
 - 🔧 `tool`: authors of merged PRs that address issues labeled as accepting PRs and tooling _(see [Options](#options))_
 
 Additionally, based on PR [conventional commit titles](https://www.conventionalcommits.org/en/v1.0.0/#summary) in the [Angular convention](https://github.com/angular/angular/blob/22b96b9/CONTRIBUTING.md#type), for all PR authors and co-authors:
@@ -95,9 +94,6 @@ It additionally allows for the following optional options.
 - `since` _(`Date`)_: Only include contributions made at or after this time.
   - Default: no limit; all available contributions are included.
   - Useful for repeated runs, to avoid re-requesting contributions that were already seen.
-- `testFiles` _(`RegExp[]`)_: Regular expressions for file paths that count as tests, for merged PRs to be given a `test` contribution.
-  - Default: `[/\.(spec|test)\.[^/]+$/i, /(^|\/)(__tests__|tests?)\//i]`
-  - Pass `[]` to skip looking at PR files altogether.
 
 ```ts
 import { getAllContributorsForRepository } from "all-contributors-for-repository";
@@ -111,7 +107,6 @@ getAllContributorsForRepository({
 	labelTypeIdeas: "feature",
 	labelTypeTool: "tool",
 	since: new Date("2026-01-01"),
-	testFiles: [/^tests\//],
 });
 ```
 

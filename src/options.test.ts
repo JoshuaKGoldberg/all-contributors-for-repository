@@ -28,10 +28,6 @@ describe(fillInOptions, () => {
 			  "owner": "fake-owner",
 			  "repo": "fake-repo",
 			  "since": undefined,
-			  "testFiles": [
-			    /\\\\\\.\\(spec\\|test\\)\\\\\\.\\[\\^/\\]\\+\\$/i,
-			    /\\(\\^\\|\\\\/\\)\\(__tests__\\|tests\\?\\)\\\\//i,
-			  ],
 			}
 		`);
 	});
@@ -45,7 +41,6 @@ describe(fillInOptions, () => {
 			labelTypeTool: "fake-label-type-tool",
 			owner,
 			repo,
-			testFiles: [/def/i],
 		});
 
 		expect(actual).toMatchInlineSnapshot(`
@@ -62,9 +57,6 @@ describe(fillInOptions, () => {
 			  "owner": "fake-owner",
 			  "repo": "fake-repo",
 			  "since": undefined,
-			  "testFiles": [
-			    /def/i,
-			  ],
 			}
 		`);
 	});
