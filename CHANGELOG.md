@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.7.0](https://github.com/JoshuaKGoldberg/all-contributors-for-repository/compare/0.6.1...0.7.0) (2026-09-21)
+
+### Features
+
+- add since option to only collect recent contributions ([#1335](https://github.com/JoshuaKGoldberg/all-contributors-for-repository/issues/1335)) ([258fe6d](https://github.com/JoshuaKGoldberg/all-contributors-for-repository/commit/258fe6daaf1600a4f2161d445506d0113e387e14)), closes [#1334](https://github.com/JoshuaKGoldberg/all-contributors-for-repository/issues/1334), references [JoshuaKGoldberg/all-contributors-auto-action#1411](https://github.com/JoshuaKGoldberg/all-contributors-auto-action/issues/1411)
+
 ## [0.6.1](https://github.com/JoshuaKGoldberg/all-contributors-for-repository/compare/0.6.0...0.6.1) (2026-09-20)
 
 ### Bug Fixes
