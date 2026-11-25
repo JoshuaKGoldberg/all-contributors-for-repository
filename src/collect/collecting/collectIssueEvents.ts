@@ -3,7 +3,7 @@ import {
 	PaginatingOctokit,
 	perPage,
 	RequestDefaults,
-} from "../api.js";
+} from "../api.ts";
 
 const relevantIssueEvents = new Set([
 	"assigned",

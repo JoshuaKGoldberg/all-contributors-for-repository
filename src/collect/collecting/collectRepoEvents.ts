@@ -3,7 +3,7 @@ import {
 	PaginatingOctokit,
 	perPage,
 	RequestDefaults,
-} from "../api.js";
+} from "../api.ts";
 
 export type RepoEvent = Awaited<ReturnType<typeof collectRepoEvents>>[number];
 

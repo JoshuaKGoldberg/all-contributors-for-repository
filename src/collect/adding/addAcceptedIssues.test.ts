@@ -1,7 +1,7 @@
 import { describe, expect, it, vi } from "vitest";
 
-import { AcceptedIssue } from "../collecting/collectAcceptedIssues.js";
-import { addAcceptedIssues } from "./addAcceptedIssues.js";
+import { AcceptedIssue } from "../collecting/collectAcceptedIssues.ts";
+import { addAcceptedIssues } from "./addAcceptedIssues.ts";
 
 const options = {
 	labelTypeBug: "labelTypeBug",
@@ -31,7 +31,7 @@ const createStubIssue = ({ body, labels }: Partial<AcceptedIssue>) =>
 		user: { login },
 	}) as AcceptedIssue;
 
-describe("addAcceptedIssues", () => {
+describe(addAcceptedIssues, () => {
 	it("adds an issue when it has a bug label", () => {
 		const add = vi.fn();
 		const issue = createStubIssue({

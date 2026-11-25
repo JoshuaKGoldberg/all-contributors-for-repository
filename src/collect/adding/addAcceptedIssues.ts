@@ -1,8 +1,8 @@
 import { descriptionToCoAuthors } from "description-to-co-authors";
 
-import { ContributorsCollection } from "../../ContributorsCollection.js";
-import { AllContributorsForRepositoryOptions } from "../../options.js";
-import { AcceptedIssue } from "../collecting/collectAcceptedIssues.js";
+import { ContributorsCollection } from "../../ContributorsCollection.ts";
+import { AllContributorsForRepositoryOptions } from "../../options.ts";
+import { AcceptedIssue } from "../collecting/collectAcceptedIssues.ts";
 
 export function addAcceptedIssues(
 	acceptedIssues: AcceptedIssue[],

@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 
-import { ContributorsCollection } from "./ContributorsCollection.js";
+import { ContributorsCollection } from "./ContributorsCollection.ts";
 
 describe(ContributorsCollection, () => {
 	it("produces no entries when none were added", () => {

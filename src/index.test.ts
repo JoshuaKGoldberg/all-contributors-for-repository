@@ -1,6 +1,6 @@
 import { describe, expect, test, vi } from "vitest";
 
-import { getAllContributorsForRepository } from "./index.js";
+import { getAllContributorsForRepository } from "./index.ts";
 
 const mockRequest = (url: string) => {
 	switch (url) {

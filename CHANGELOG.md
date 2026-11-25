@@ -50,7 +50,7 @@
 
 - do not pass the owner and repo values to GET /search/issues ([#1097](https://github.com/JoshuaKGoldberg/all-contributors-for-repository/issues/1097)) ([486c046](https://github.com/JoshuaKGoldberg/all-contributors-for-repository/commit/486c04664626b3eb8c144241095a6b937117cd45)), closes [#1120](https://github.com/JoshuaKGoldberg/all-contributors-for-repository/issues/1120) [#1096](https://github.com/JoshuaKGoldberg/all-contributors-for-repository/issues/1096)
 
-# [0.4.0](https://github.com/JoshuaKGoldberg/all-contributors-for-repository/compare/0.3.1...0.4.0) (2024-12-16)
+## [0.4.0](https://github.com/JoshuaKGoldberg/all-contributors-for-repository/compare/0.3.1...0.4.0) (2024-12-16)
 
 ### Features
 
@@ -62,7 +62,7 @@
 
 - also export type RawAllContributorsForRepositoryOptions ([bdf65b6](https://github.com/JoshuaKGoldberg/all-contributors-for-repository/commit/bdf65b678e417a95951942e528fc5c379ee22160))
 
-# [0.3.0](https://github.com/JoshuaKGoldberg/all-contributors-for-repository/compare/0.2.2...0.3.0) (2024-08-10)
+## [0.3.0](https://github.com/JoshuaKGoldberg/all-contributors-for-repository/compare/0.2.2...0.3.0) (2024-08-10)
 
 ### Bug Fixes
 
@@ -85,7 +85,7 @@
 
 - include missing features option code from commit ([3a3abf8](https://github.com/JoshuaKGoldberg/all-contributors-for-repository/commit/3a3abf856557427f36e94943194194237168b826))
 
-# [0.2.0](https://github.com/JoshuaKGoldberg/all-contributors-for-repository/compare/0.1.1...0.2.0) (2023-11-27)
+## [0.2.0](https://github.com/JoshuaKGoldberg/all-contributors-for-repository/compare/0.1.1...0.2.0) (2023-11-27)
 
 ### Features
 

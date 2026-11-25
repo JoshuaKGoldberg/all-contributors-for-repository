@@ -1,10 +1,10 @@
 import { createCachingCoAuthorToUsername } from "co-author-to-username";
 import { Octokit } from "octokit";
 
-import { ContributorsCollection } from "../../ContributorsCollection.js";
-import { MergedPull } from "../collecting/collectMergedPulls.js";
-import { parseMergedPullAuthors } from "../parsing/parseMergedPullAuthors.js";
-import { parseMergedPullType } from "../parsing/parseMergedPullType.js";
+import { ContributorsCollection } from "../../ContributorsCollection.ts";
+import { MergedPull } from "../collecting/collectMergedPulls.ts";
+import { parseMergedPullAuthors } from "../parsing/parseMergedPullAuthors.ts";
+import { parseMergedPullType } from "../parsing/parseMergedPullType.ts";
 
 export async function addMergedPulls(
 	mergedPulls: MergedPull[],

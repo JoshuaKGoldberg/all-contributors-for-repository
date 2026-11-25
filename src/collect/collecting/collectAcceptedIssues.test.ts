@@ -1,7 +1,7 @@
 import { describe, expect, it, vi } from "vitest";
 
-import { PaginatingOctokit } from "../api.js";
-import { collectAcceptedIssues } from "./collectAcceptedIssues.js";
+import { PaginatingOctokit } from "../api.ts";
+import { collectAcceptedIssues } from "./collectAcceptedIssues.ts";
 
 const mockIterator = vi.fn();
 
@@ -18,7 +18,7 @@ async function* createPage(data: unknown[]) {
 	yield await Promise.resolve({ data });
 }
 
-describe("collectAcceptedIssues", () => {
+describe(collectAcceptedIssues, () => {
 	it("requests all issues with the label when since is not provided", async () => {
 		mockIterator.mockReturnValue(createPage([]));
 

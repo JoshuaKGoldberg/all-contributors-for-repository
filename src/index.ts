@@ -1,6 +1,6 @@
 export {
 	type ContributorContributions,
 	type ContributorsContributions,
-} from "./ContributorsCollection.js";
-export { getAllContributorsForRepository } from "./getAllContributorsForRepository.js";
-export type { RawAllContributorsForRepositoryOptions } from "./options.js";
+} from "./ContributorsCollection.ts";
+export { getAllContributorsForRepository } from "./getAllContributorsForRepository.ts";
+export type { RawAllContributorsForRepositoryOptions } from "./options.ts";
