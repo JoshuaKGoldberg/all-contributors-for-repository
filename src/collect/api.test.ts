@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 
-import { paginate } from "./api.js";
+import { paginate } from "./api.ts";
 
 async function* createPages<T>(pages: T[][]) {
 	for (const data of pages) {
@@ -8,7 +8,7 @@ async function* createPages<T>(pages: T[][]) {
 	}
 }
 
-describe("paginate", () => {
+describe(paginate, () => {
 	it("returns an empty array when the iterable yields no pages", async () => {
 		const actual = await paginate(createPages([]));
 

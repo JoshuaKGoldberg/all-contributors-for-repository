@@ -1,8 +1,8 @@
 import { describe, expect, it, vi } from "vitest";
 
-import { parseMergedPullAuthors } from "./parseMergedPullAuthors.js";
+import { parseMergedPullAuthors } from "./parseMergedPullAuthors.ts";
 
-describe("parseMergedPullAuthors", () => {
+describe(parseMergedPullAuthors, () => {
 	it("returns an empty array when the pull has no user", async () => {
 		const actual = await parseMergedPullAuthors({}, vi.fn());
 

@@ -1,7 +1,7 @@
 import { describe, expect, it, vi } from "vitest";
 
-import { PaginatingOctokit } from "../api.js";
-import { collectRepoEvents } from "./collectRepoEvents.js";
+import { PaginatingOctokit } from "../api.ts";
+import { collectRepoEvents } from "./collectRepoEvents.ts";
 
 const mockIterator = vi.fn();
 
@@ -18,7 +18,7 @@ async function* createPage(data: unknown[]) {
 	yield await Promise.resolve({ data });
 }
 
-describe("collectRepoEvents", () => {
+describe(collectRepoEvents, () => {
 	it("returns all events when since is not provided", async () => {
 		const events = [
 			{ created_at: "2026-01-03T00:00:00Z", type: "PushEvent" },

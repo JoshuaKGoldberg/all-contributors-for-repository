@@ -1,4 +1,4 @@
-import { RepoEvent } from "../collecting/collectRepoEvents.js";
+import { RepoEvent } from "../collecting/collectRepoEvents.ts";
 
 export type PullRequestReviewEvent = RepoEvent & {
 	issue: {

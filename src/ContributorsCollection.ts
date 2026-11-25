@@ -1,4 +1,4 @@
-import { Contributor } from "./Contributor.js";
+import { Contributor } from "./Contributor.ts";
 
 /**
  * For a set of logins, the contributions under those users.

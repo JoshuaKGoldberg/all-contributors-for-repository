@@ -1,8 +1,8 @@
 import { describe, expect, it } from "vitest";
 
-import { Contributor } from "./Contributor.js";
+import { Contributor } from "./Contributor.ts";
 
-describe("Contributor", () => {
+describe(Contributor, () => {
 	it("adds a new entry under a type when that type doesn't yet exist", () => {
 		const contributor = new Contributor();
 

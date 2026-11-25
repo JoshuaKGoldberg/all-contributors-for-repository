@@ -1,8 +1,8 @@
 import { describe, expect, it } from "vitest";
 
-import { IssueEvent } from "../collecting/collectIssueEvents.js";
-import { RepoEvent } from "../collecting/collectRepoEvents.js";
-import { processContributors } from "./processContributors.js";
+import { IssueEvent } from "../collecting/collectIssueEvents.ts";
+import { RepoEvent } from "../collecting/collectRepoEvents.ts";
+import { processContributors } from "./processContributors.ts";
 
 const fakeOptions = { ignoredLogins: [/^ignored-login$/i] };
 

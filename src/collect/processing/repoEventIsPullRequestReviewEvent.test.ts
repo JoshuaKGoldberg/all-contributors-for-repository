@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 
-import { repoEventIsPullRequestReviewEvent } from "../processing/repoEventIsPullRequestReviewEvent.js";
+import { repoEventIsPullRequestReviewEvent } from "../processing/repoEventIsPullRequestReviewEvent.ts";
 
 describe("eventIsPullRequestReviewEvent", () => {
 	it.each([

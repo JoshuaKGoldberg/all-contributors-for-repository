@@ -1,8 +1,8 @@
-import { ContributorsCollection } from "../../ContributorsCollection.js";
-import { AllContributorsForRepositoryOptions } from "../../options.js";
-import { IssueEvent } from "../collecting/collectIssueEvents.js";
-import { RepoEvent } from "../collecting/collectRepoEvents.js";
-import { repoEventIsPullRequestReviewEvent } from "./repoEventIsPullRequestReviewEvent.js";
+import { ContributorsCollection } from "../../ContributorsCollection.ts";
+import { AllContributorsForRepositoryOptions } from "../../options.ts";
+import { IssueEvent } from "../collecting/collectIssueEvents.ts";
+import { RepoEvent } from "../collecting/collectRepoEvents.ts";
+import { repoEventIsPullRequestReviewEvent } from "./repoEventIsPullRequestReviewEvent.ts";
 
 export function processContributors(
 	issueEvents: IssueEvent[],

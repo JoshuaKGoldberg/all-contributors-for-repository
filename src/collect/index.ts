@@ -1,13 +1,13 @@
-import { ContributorsContributions } from "../ContributorsCollection.js";
-import { AllContributorsForRepositoryOptions } from "../options.js";
-import { addAcceptedIssues } from "./adding/addAcceptedIssues.js";
-import { addMergedPulls } from "./adding/addMergedPulls.js";
-import { createOctokit } from "./api.js";
-import { collectAcceptedIssues } from "./collecting/collectAcceptedIssues.js";
-import { collectIssueEvents } from "./collecting/collectIssueEvents.js";
-import { collectMergedPulls } from "./collecting/collectMergedPulls.js";
-import { collectRepoEvents } from "./collecting/collectRepoEvents.js";
-import { processContributors } from "./processing/processContributors.js";
+import { ContributorsContributions } from "../ContributorsCollection.ts";
+import { AllContributorsForRepositoryOptions } from "../options.ts";
+import { addAcceptedIssues } from "./adding/addAcceptedIssues.ts";
+import { addMergedPulls } from "./adding/addMergedPulls.ts";
+import { createOctokit } from "./api.ts";
+import { collectAcceptedIssues } from "./collecting/collectAcceptedIssues.ts";
+import { collectIssueEvents } from "./collecting/collectIssueEvents.ts";
+import { collectMergedPulls } from "./collecting/collectMergedPulls.ts";
+import { collectRepoEvents } from "./collecting/collectRepoEvents.ts";
+import { processContributors } from "./processing/processContributors.ts";
 
 export async function collect(
 	options: AllContributorsForRepositoryOptions,

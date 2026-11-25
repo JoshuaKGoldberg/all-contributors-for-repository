@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 
-import { fillInOptions } from "./options.js";
+import { fillInOptions } from "./options.ts";
 
 const owner = "fake-owner";
 const repo = "fake-repo";

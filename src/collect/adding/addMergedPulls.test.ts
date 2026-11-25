@@ -1,8 +1,8 @@
 import { Octokit } from "octokit";
 import { describe, expect, it, vi } from "vitest";
 
-import { MergedPull } from "../collecting/collectMergedPulls.js";
-import { addMergedPulls } from "./addMergedPulls.js";
+import { MergedPull } from "../collecting/collectMergedPulls.ts";
+import { addMergedPulls } from "./addMergedPulls.ts";
 
 const mockCreateCachingCoAuthorToUsername = vi.fn();
 
@@ -14,13 +14,13 @@ vi.mock("co-author-to-username", () => ({
 
 const mockParseMergedPullAuthors = vi.fn();
 
-vi.mock("../parsing/parseMergedPullAuthors.js", () => ({
+vi.mock("../parsing/parseMergedPullAuthors.ts", () => ({
 	get parseMergedPullAuthors() {
 		return mockParseMergedPullAuthors;
 	},
 }));
 
-describe("addMergedPulls", () => {
+describe(addMergedPulls, () => {
 	it("adds each contributor from parsed pull authors", async () => {
 		const add = vi.fn();
 		const mergedPull = {

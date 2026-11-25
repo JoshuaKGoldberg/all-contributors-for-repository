@@ -3,7 +3,7 @@ import {
 	PaginatingOctokit,
 	perPage,
 	RequestDefaults,
-} from "../api.js";
+} from "../api.ts";
 
 export type AcceptedIssue = Awaited<
 	ReturnType<typeof collectAcceptedIssues>

@@ -1,7 +1,7 @@
 import { describe, expect, it, vi } from "vitest";
 
-import { PaginatingOctokit } from "../api.js";
-import { collectIssueEvents } from "./collectIssueEvents.js";
+import { PaginatingOctokit } from "../api.ts";
+import { collectIssueEvents } from "./collectIssueEvents.ts";
 
 const mockIterator = vi.fn();
 
@@ -18,7 +18,7 @@ async function* createPage(data: unknown[]) {
 	yield await Promise.resolve({ data });
 }
 
-describe("collectIssueEvents", () => {
+describe(collectIssueEvents, () => {
 	it("requests 100 items per page when collecting events", async () => {
 		mockIterator.mockReturnValue(createPage([]));
 
