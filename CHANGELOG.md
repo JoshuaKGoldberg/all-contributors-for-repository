@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.0.1](https://github.com/JoshuaKGoldberg/all-contributors-for-repository/compare/1.0.0...1.0.1) (2026-11-25)
+
+### Bug Fixes
+
+- bump to create-typescript-app@2.87.23 ([#1425](https://github.com/JoshuaKGoldberg/all-contributors-for-repository/issues/1425)) ([51be5a6](https://github.com/JoshuaKGoldberg/all-contributors-for-repository/commit/51be5a6eb62f4714ee2d1e2fdbfe94287e2df7a9)), closes [#1424](https://github.com/JoshuaKGoldberg/all-contributors-for-repository/issues/1424)
+
 ## [1.0.0](https://github.com/JoshuaKGoldberg/all-contributors-for-repository/compare/0.7.0...1.0.0) (2026-09-21)
 
 ### ⚠ BREAKING CHANGES
